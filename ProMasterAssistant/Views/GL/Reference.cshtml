@@ -1,0 +1,115 @@
+﻿<ul class="nav nav-tabs" id="glruleref">
+	<li><a href="#andreq" data-toggle="tab">AND/REQ</a></li>
+	<li><a href="#or" data-toggle="tab">OR</a></li>
+	<li><a href="#xor" data-toggle="tab">XOR</a></li>
+	<li><a href="#xnor" data-toggle="tab">XNOR</a></li>
+	<li><a href="#dep" data-toggle="tab">DEP</a></li>
+	<li><a href="#def" data-toggle="tab">DEF</a></li>
+	<li><a href="#pro" data-toggle="tab">PRO</a></li>
+	<li><a href="#prodep" data-toggle="tab">PRODEP</a></li>
+	<li><a href="#inv" data-toggle="tab">INV</a></li>
+	<li><a href="#fillahd" data-toggle="tab">FILLAHD</a></li>
+	<li><a href="#fillahddefault" data-toggle="tab">FILLAHDDEFAULT</a></li>
+	<li><a href="#overlay" data-toggle="tab">OVERLAY</a></li>
+	<li><a href="#setuppercase" data-toggle="tab">SETUPPERCASE</a></li>
+	<li><a href="#setlowercase" data-toggle="tab">SETLOWERCASE</a></li>
+	<li><a href="#multiview" data-toggle="tab">MULTIVIEW</a></li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane" id="andreq">
+		<p>All the specified segments are required, includes the ability to specify conditionally required.</p>
+		<p>Format: {segid}[**condition];</p>
+		<p>Example 1: 1;2;</p>
+		<p>The above example will validate that both segments 1 and 2 have to be entered.</p>
+		<p>Example 2: 1;2**':gl1'='SAP';</p>
+		<p>The above example states that segment 1 is mandatory and segment 2 is only mandatory if segment 1 has a value of SAP.</p>
+	</div>
+	<div class="tab-pane" id="or">
+		<p>At least one of the specified segments are required.</p>
+		<p>Format: {segid}[**condition];</p>
+		<p>Example 1: 1;2;3;</p>
+		<p>The above example will force user to enter at least one value into either segment 1, 2 or 3.</p>
+		<p>Example 2: 1;2**':gl1'='SAP';</p>
+		<p>The above example will force using to enter at least segment 1, and segment 2 will only be included in the evaluation if segment 1 value is SAP.</p>
+	</div>
+	<div class="tab-pane" id="xor">
+		<p>Only one of the specified segments are required.</p>
+		<p>Format: {segid}[**condition];</p>
+		<p>Example 1: 1;2;3;</p>
+		<p>Example 2: 1;2**':gl1'='SAP';</p>
+	</div>
+	<div class="tab-pane" id="xnor">
+		<p>Either all specified segments or none are required.</p>
+		<p>Format: {segid}[**condition];</p>
+		<p>Example 1: 1;2;3;</p>
+		<p>Example 2: 1;2**':gl1'='SAP'
+	</div>
+	<div class="tab-pane" id="dep">
+		<p>This allows you to define the relationship of the segments to each other, and determining when and which columns should cleared as the user enters data into the segments.</p>
+		<p>Format: {child-segid}:{parent-segid};</p>
+		<p>Example: 2:1;3:2</p>
+		<p>The above example will clear segment 2 when segment 1 is changed, and segment 3 cleared when segment 2 is changed.</p>
+	</div>
+	<div class="tab-pane" id="def">
+		<p>The specified segments can be set to have a default value if the segment is empty.</p>
+		<p>Format: {segid}={value};</p>
+		<p>Example: 1=SAP;2=1000</p>
+		<p>The above example will set segment 1 to SAP if it is empty and set segment 2 to 1000 also if empty.</p>
+	</div>
+	<div class="tab-pane" id="pro">
+		<p>All the specified segments are to be protected, user can not edit them.</p>
+		<p>Format: {segid};</p>
+		<p>Example: 1;2</p>
+		<p>The above example will prevent the user from entering values into segments 1 and 2.</p>
+	</div>
+	<div class="tab-pane" id="prodep">
+		<p>This allows you to define the relationship of the segments to each other, and determining when and which columns should be protected as the user enters data into the segments.</p>
+		<p>Format: {segid};</p>
+		<p>Example: 2:1;</p>
+		<p>The above example will prevent the user from entering a value into segment 2 until a value is entered into segment 1.</p>
+	</div>
+	<div class="tab-pane" id="inv">
+		<p>All the listed segments will be invisible to the user.</p>
+		<p>Format: {segid};</p>
+		<p>Example: 1;2</p>
+		<p>The above example will hide segments 1 and 2 from the user but will still exist and participate in other rule processing such as OVERLAY, DEP, etc.</p>
+	</div>
+	<div class="tab-pane" id="fillahd">
+		<p>Auto-populate succeeding segments until the last nominated segment.</p>
+		<p>Format: {segid}</p>
+		<p>Example: 6</p>
+		<p>For example, if the user selected a value into segment 2 then FILLAHD will then try to auto-populate all the segments until segment 6, and for each segment, if only one value is found, will be populated with that value.</p>
+	</div>
+	<div class="tab-pane" id="fillahddefault">
+		<p>Auto-populate succeeding segment with specified attribute of nominated segment.</p>
+		<p>Format: {segid}:{segid}={attrib}</p>
+		<p>Example: 4:5=3</p>
+		<p>For example, if the user selected a value into segment 4 then FILLAHDDEFAULT will then try to auto-populate segment 5 with attribute 3 from segment 4.</p>
+	</div>
+	<div class="tab-pane" id="overlay">
+		<p>This allows the creation default GL code(s) by merging a number previously defined codes throughout the application, from account profile, expense type etc, when creating a commitment.</p>
+		<p>Format: {gl_view}&&[dep|nodep];</p>
+		<p>Example: account_gl&&dep;expense_gl&&dep;transaction_gl&&dep</p>
+		<p>The above example will perform the OVERLAY using GL codes from the ACCOUNT_GL, EXPENSE_GL and TRANSACTION_GL sources, and will apply any DEP rules. Specify 'nodep' to not process any DEP rules.</p>
+		<p>Valid GL sources: account_gl, expense_gl, transaction_gl, catitem_gl</p>
+	</div>
+	<div class="tab-pane" id="setuppercase">
+		<p>This rule forces the text entry into a segment to be uppercase.</p>
+		<p>Format: {segid};</p>
+		<p>Example: 2;3</p>
+		<p>The above example will update any codes in the nominated segments to be uppercase when submitted.</p>
+	</div>
+	<div class="tab-pane" id="setlowercase">
+		<p>This rule forces the text entry into a segment to be lowercase.</p>
+		<p>Format: {segid};</p>
+		<p>Example: 2;3</p>
+		<p>The above example will update any codes in the nominated segments to be lowercase when submitted.</p>
+	</div>
+	<div class="tab-pane" id="multiview">
+		<p>This rule will dynamically hide/show segments based on the value of a nominated segment.</p>
+		<p>Format: {segid}={'value'};{dep-segid,dep-segid}</p>
+		<p>Example: 1=SAP;2,3</p>
+		<p>The above example will show segments 2 and 3 and hide any other segments when segment 1 has a value of SAP.</p>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/less")
+	@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+	<body>
+		<div class="header row-fluid">
+			<div class="span5">
+				<span class="appname">ProMaster Assistant</span>
+				<br/>
+				<span class="username">@User.Identity.Name</span>
+			</div>
+			<div class="span7">
+				<ul class="navbar">
+					<li @Html.ActiveMenu("Database")>
+						<a href="@Url.Action("Index","Home")">Database Connection</a>
+					</li>
+					<li @Html.ActiveMenu("Activity")>
+						<a href="@Url.Action("Index","Activity")">Activity Manager</a>
+					</li>
+					<li @Html.ActiveMenu("Workflow")>
+						<a href="@Url.Action("Index","Workflow")">Workflow Configitation</a>
+					</li>
+					<li @Html.ActiveMenu("GL")>
+						<a href="@Url.Action("Index","GL")">GL Configuration</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		@RenderBody()
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/bootstrap")
+		@RenderSection("scripts", required: false)
+	</body>
+</html>

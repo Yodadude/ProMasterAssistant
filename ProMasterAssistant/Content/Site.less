@@ -1,0 +1,110 @@
+﻿
+* { 
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Tahoma";
+	font-size: 12pt;
+}
+
+.main-container {
+	width: 940px;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+table.connections {
+	width: 100%;
+	text-align: center;
+	border: 1px solid deepskyblue;
+
+	th {
+		background-color: lightskyblue;
+		color: white;
+		font-weight: bold;
+		height: 30px;
+		vertical-align:middle;
+	}
+
+	tr.highlight {
+        background-color: #e4e4e4;
+        cursor: pointer;
+    }
+    
+	tr.select {
+        background-color: #90ebfc;
+    }
+
+	tr td:first-child {
+		font-weight: bold;
+		width: 30%;
+	}
+
+	td {
+		text-align: left;
+		padding: 5px;
+	}
+
+}
+
+.header {
+	width: 100%;
+	height: 80px;
+	background-color: lightskyblue;
+	border-bottom: 4px solid deepskyblue;
+	padding-top: 20px;
+
+	.appname {
+		font-size: 18pt; 
+		color: aliceblue;
+		font-family: Tahoma;
+		font-weight:bold;
+		padding-left:20px;
+	}
+
+	.username {
+		font-size: 8pt;
+		color: aliceblue;
+		padding-left:20px;
+	}
+	
+	ul {
+		
+		li {
+			display: inline;
+			background-color: deepskyblue;
+			height: 30px;
+			padding: 8px;
+
+			a {
+				height: 30px;
+				padding: 8px;
+				color: #fff;
+			}
+			a:hover {
+				text-decoration: none;
+			}
+		}
+
+		li.active {
+			background-color: navy;
+		}
+
+		li:hover {
+			background-color: royalblue;
+			cursor: pointer;
+		}
+	}
+}
+
+ul#glruleref {font-family:Tahoma;}
+div.tab-pane {
+	height: 150px;
+	background-color: azure;
+	border: 1px dashed deepskyblue;
+	padding:5px;
+	p {font-size:10pt;padding-bottom:10px;}
+}
