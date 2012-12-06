@@ -72,12 +72,13 @@ table.connections {
 	}
 	
 	ul {
-		
+		margin-top: 10px;
 		li {
 			display: inline;
 			background-color: deepskyblue;
 			height: 30px;
 			padding: 8px;
+			
 
 			a {
 				height: 30px;
@@ -90,11 +91,11 @@ table.connections {
 		}
 
 		li.active {
-			background-color: navy;
+			background-color: royalblue;
 		}
 
 		li:hover {
-			background-color: royalblue;
+			background-color: #8793FA;
 			cursor: pointer;
 		}
 	}
@@ -107,4 +108,29 @@ div.tab-pane {
 	border: 1px dashed deepskyblue;
 	padding:5px;
 	p {font-size:10pt;padding-bottom:10px;}
+}
+
+div#fly-open {
+	border: 1px solid #8f8f8f;
+	border-bottom: none;
+	position:fixed;
+	bottom:0px;
+	width:60%;
+	text-align:center;
+	padding: 0;
+	margin: 0 20% 0 20%;
+	z-index:100;
+
+	div#fly-open-title {
+		color:white;
+		background-color:skyblue;
+		line-height: 160%;
+		width:100%;
+		cursor: pointer;
+		font-weight:bold;
+	}
+	div#fly-open-content {
+		padding: 5px;
+		display: none;
+	}
 }

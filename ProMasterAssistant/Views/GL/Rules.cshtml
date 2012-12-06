@@ -1,9 +1,20 @@
 ﻿<div class="main-container">
 	@Html.Partial("_Menu")
 	
-	<div id="ref-container"></div>
+	
+</div>
+<div id="fly-open">
+	<div id="fly-open-title">Reference</div>
+	<div id="fly-open-content">
+		<div id="ref-container"></div>
+	</div>
 </div>
 @section scripts
 {
 	<script src="~/Scripts/GlRules.js"></script>
+	<script type="text/javascript">
+		$("#fly-open-title").click(function () {
+			$("#fly-open-content").slideToggle("slow", function () {});
+		});
+	</script>
 }
