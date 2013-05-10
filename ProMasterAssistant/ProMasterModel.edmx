@@ -1,0 +1,1054 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProMasterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ProMasterModelStoreContainer">
+          <EntitySet Name="gl_rules" EntityType="ProMasterModel.Store.gl_rules" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="gl_segment_codes" EntityType="ProMasterModel.Store.gl_segment_codes" store:Type="Tables" store:Schema="dbo" store:Name="gl_segment_codes">
+            <DefiningQuery>SELECT 
+      [gl_segment_codes].[segment_id] AS [segment_id], 
+      [gl_segment_codes].[code] AS [code], 
+      [gl_segment_codes].[description] AS [description], 
+      [gl_segment_codes].[attrib1] AS [attrib1], 
+      [gl_segment_codes].[attrib2] AS [attrib2], 
+      [gl_segment_codes].[attrib3] AS [attrib3], 
+      [gl_segment_codes].[attrib4] AS [attrib4], 
+      [gl_segment_codes].[active_flag] AS [active_flag]
+      FROM [dbo].[gl_segment_codes] AS [gl_segment_codes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="gl_segment_codes_user" EntityType="ProMasterModel.Store.gl_segment_codes_user" store:Type="Tables" store:Schema="dbo" store:Name="gl_segment_codes_user">
+            <DefiningQuery>SELECT 
+      [gl_segment_codes_user].[segment_id] AS [segment_id], 
+      [gl_segment_codes_user].[code] AS [code], 
+      [gl_segment_codes_user].[description] AS [description], 
+      [gl_segment_codes_user].[attrib1] AS [attrib1], 
+      [gl_segment_codes_user].[attrib2] AS [attrib2], 
+      [gl_segment_codes_user].[attrib3] AS [attrib3], 
+      [gl_segment_codes_user].[attrib4] AS [attrib4], 
+      [gl_segment_codes_user].[user_name] AS [user_name], 
+      [gl_segment_codes_user].[expiry_date] AS [expiry_date]
+      FROM [dbo].[gl_segment_codes_user] AS [gl_segment_codes_user]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="gl_segment_defn" EntityType="ProMasterModel.Store.gl_segment_defn" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="gl_type" EntityType="ProMasterModel.Store.gl_type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="gl_view_segments" EntityType="ProMasterModel.Store.gl_view_segments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="gl_views" EntityType="ProMasterModel.Store.gl_views" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="impexp_activities" EntityType="ProMasterModel.Store.impexp_activities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="impexp_activity_parms" EntityType="ProMasterModel.Store.impexp_activity_parms" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="impexp_email" EntityType="ProMasterModel.Store.impexp_email" store:Type="Tables" store:Schema="dbo" store:Name="impexp_email">
+            <DefiningQuery>SELECT 
+      [impexp_email].[user_name] AS [user_name], 
+      [impexp_email].[activity] AS [activity], 
+      [impexp_email].[email_option] AS [email_option]
+      FROM [dbo].[impexp_email] AS [impexp_email]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="impexp_load_order" EntityType="ProMasterModel.Store.impexp_load_order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="impexp_log" EntityType="ProMasterModel.Store.impexp_log" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="impexp_log_importfiles" EntityType="ProMasterModel.Store.impexp_log_importfiles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="impexp_log_output_files" EntityType="ProMasterModel.Store.impexp_log_output_files" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="impexp_log_summary" EntityType="ProMasterModel.Store.impexp_log_summary" store:Type="Tables" store:Schema="dbo" store:Name="impexp_log_summary">
+            <DefiningQuery>SELECT 
+      [impexp_log_summary].[log_id] AS [log_id], 
+      [impexp_log_summary].[no_debit_txns] AS [no_debit_txns], 
+      [impexp_log_summary].[no_credit_txns] AS [no_credit_txns], 
+      [impexp_log_summary].[val_credit_txns] AS [val_credit_txns], 
+      [impexp_log_summary].[val_debit_txns] AS [val_debit_txns], 
+      [impexp_log_summary].[statement_date] AS [statement_date], 
+      [impexp_log_summary].[val_bill_credit_txns] AS [val_bill_credit_txns], 
+      [impexp_log_summary].[val_bill_debit_txns] AS [val_bill_debit_txns]
+      FROM [dbo].[impexp_log_summary] AS [impexp_log_summary]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="impexp_logdetails" EntityType="ProMasterModel.Store.impexp_logdetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="impexp_order_types" EntityType="ProMasterModel.Store.impexp_order_types" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="impexp_rules" EntityType="ProMasterModel.Store.impexp_rules" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="impexp_schedule" EntityType="ProMasterModel.Store.impexp_schedule" store:Type="Tables" store:Schema="dbo" store:Name="impexp_schedule">
+            <DefiningQuery>SELECT 
+      [impexp_schedule].[activity] AS [activity], 
+      [impexp_schedule].[schedule_date] AS [schedule_date], 
+      [impexp_schedule].[schedule_type] AS [schedule_type], 
+      [impexp_schedule].[activity_subtype] AS [activity_subtype], 
+      [impexp_schedule].[admin_id] AS [admin_id], 
+      [impexp_schedule].[started_date] AS [started_date], 
+      [impexp_schedule].[stopped_date] AS [stopped_date], 
+      [impexp_schedule].[spid_log] AS [spid_log], 
+      [impexp_schedule].[spid_admin] AS [spid_admin], 
+      [impexp_schedule].[spid_activity] AS [spid_activity], 
+      [impexp_schedule].[last_running_log_id] AS [last_running_log_id], 
+      [impexp_schedule].[created_by] AS [created_by], 
+      [impexp_schedule].[create_date] AS [create_date], 
+      [impexp_schedule].[modified_by] AS [modified_by], 
+      [impexp_schedule].[modify_date] AS [modify_date], 
+      [impexp_schedule].[unit_id] AS [unit_id], 
+      [impexp_schedule].[group_name] AS [group_name]
+      FROM [dbo].[impexp_schedule] AS [impexp_schedule]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="impexp_sql_actions" EntityType="ProMasterModel.Store.impexp_sql_actions" store:Type="Tables" store:Schema="dbo" store:Name="impexp_sql_actions">
+            <DefiningQuery>SELECT 
+      [impexp_sql_actions].[activity] AS [activity], 
+      [impexp_sql_actions].[action_group] AS [action_group], 
+      [impexp_sql_actions].[process_order] AS [process_order], 
+      [impexp_sql_actions].[sql_order] AS [sql_order], 
+      [impexp_sql_actions].[process_name] AS [process_name], 
+      [impexp_sql_actions].[sql_actions] AS [sql_actions], 
+      [impexp_sql_actions].[user_msg] AS [user_msg], 
+      [impexp_sql_actions].[batch_label] AS [batch_label], 
+      [impexp_sql_actions].[batch_command] AS [batch_command], 
+      [impexp_sql_actions].[log_select_results] AS [log_select_results]
+      FROM [dbo].[impexp_sql_actions] AS [impexp_sql_actions]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk1_impexp_activity_parms" Association="ProMasterModel.Store.fk1_impexp_activity_parms">
+            <End Role="impexp_activities" EntitySet="impexp_activities" />
+            <End Role="impexp_activity_parms" EntitySet="impexp_activity_parms" />
+          </AssociationSet>
+          <AssociationSet Name="fk1_impexp_logdetails" Association="ProMasterModel.Store.fk1_impexp_logdetails">
+            <End Role="impexp_log" EntitySet="impexp_log" />
+            <End Role="impexp_logdetails" EntitySet="impexp_logdetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="gl_rules">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+            <PropertyRef Name="search_order" />
+          </Key>
+          <Property Name="gl_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="view_name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="search_order" Type="int" Nullable="false" />
+          <Property Name="segments" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="operator" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="erromsg" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="message2" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'pm92_dev.dbo.gl_segment_codes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="gl_segment_codes">
+          <Key>
+            <PropertyRef Name="segment_id" />
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="segment_id" Type="int" Nullable="false" />
+          <Property Name="code" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="100" />
+          <Property Name="attrib1" Type="varchar" MaxLength="100" />
+          <Property Name="attrib2" Type="varchar" MaxLength="100" />
+          <Property Name="attrib3" Type="varchar" MaxLength="100" />
+          <Property Name="attrib4" Type="varchar" MaxLength="100" />
+          <Property Name="active_flag" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'pm92_dev.dbo.gl_segment_codes_user' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="gl_segment_codes_user">
+          <Key>
+            <PropertyRef Name="segment_id" />
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="segment_id" Type="int" Nullable="false" />
+          <Property Name="code" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="100" />
+          <Property Name="attrib1" Type="varchar" MaxLength="100" />
+          <Property Name="attrib2" Type="varchar" MaxLength="100" />
+          <Property Name="attrib3" Type="varchar" MaxLength="100" />
+          <Property Name="attrib4" Type="varchar" MaxLength="100" />
+          <Property Name="user_name" Type="varchar" MaxLength="50" />
+          <Property Name="expiry_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="gl_segment_defn">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="segment_id" />
+          </Key>
+          <Property Name="gl_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="segment_id" Type="int" Nullable="false" />
+          <Property Name="error_text" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="label" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="char_limit" Type="int" Nullable="false" />
+          <Property Name="width" Type="int" Nullable="false" />
+          <Property Name="data_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="validation_type" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="search_sql" Type="text" />
+          <Property Name="row_warn" Type="int" />
+          <Property Name="search_win_defn" Type="text" />
+        </EntityType>
+        <EntityType Name="gl_type">
+          <Key>
+            <PropertyRef Name="gl_type" />
+          </Key>
+          <Property Name="gl_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="delimiter" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="description" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="tab_no" Type="int" />
+          <Property Name="validation_type" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="gl_view_segments">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+            <PropertyRef Name="segment_id" />
+          </Key>
+          <Property Name="gl_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="view_name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="segment_id" Type="int" Nullable="false" />
+          <Property Name="position" Type="int" Nullable="false" />
+          <Property Name="dw_expression" Type="text" />
+          <Property Name="required" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="search_sql" Type="text" />
+          <Property Name="search_win_defn" Type="text" />
+        </EntityType>
+        <EntityType Name="gl_views">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+          </Key>
+          <Property Name="gl_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="view_name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="load_order" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="impexp_activities">
+          <Key>
+            <PropertyRef Name="activity" />
+          </Key>
+          <Property Name="activity" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="activity_classname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="parm_vo_classname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="allow_auto_schedule" Type="char" MaxLength="1" />
+          <Property Name="bitmap" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="impexp_activity_parms">
+          <Key>
+            <PropertyRef Name="activity" />
+            <PropertyRef Name="field_name" />
+          </Key>
+          <Property Name="activity" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="field_name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="value_type" Type="int" Nullable="false" />
+          <Property Name="value_string" Type="varchar" MaxLength="4000" />
+          <Property Name="value_numeric" Type="decimal" Precision="28" Scale="10" />
+          <Property Name="value_datetime" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'pm92_dev.dbo.impexp_email' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="impexp_email">
+          <Key>
+            <PropertyRef Name="user_name" />
+            <PropertyRef Name="activity" />
+          </Key>
+          <Property Name="user_name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="activity" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="email_option" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="impexp_load_order">
+          <Key>
+            <PropertyRef Name="activity" />
+            <PropertyRef Name="process_name" />
+            <PropertyRef Name="rule_order" />
+            <PropertyRef Name="view_name" />
+          </Key>
+          <Property Name="activity" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="process_name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="rule_order" Type="int" Nullable="false" />
+          <Property Name="view_name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="load_order" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="impexp_log">
+          <Key>
+            <PropertyRef Name="log_id" />
+          </Key>
+          <Property Name="log_id" Type="int" Nullable="false" />
+          <Property Name="activity" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="log_date" Type="datetime" Nullable="false" />
+          <Property Name="run_rc" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="impexp_log_importfiles">
+          <Key>
+            <PropertyRef Name="impexp_log_importfile_id" />
+          </Key>
+          <Property Name="impexp_log_importfile_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="log_id" Type="int" Nullable="false" />
+          <Property Name="file_name" Type="varchar" MaxLength="255" />
+          <Property Name="date_loaded" Type="datetime" Nullable="false" />
+          <Property Name="success" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="file_hash" Type="varchar" MaxLength="100" />
+          <Property Name="unit_id" Type="varchar" MaxLength="50" />
+          <Property Name="failure_reason" Type="varchar(max)" />
+          <Property Name="renamed_file_name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="impexp_log_output_files">
+          <Key>
+            <PropertyRef Name="log_id" />
+            <PropertyRef Name="file_name" />
+            <PropertyRef Name="block_number" />
+          </Key>
+          <Property Name="log_id" Type="int" Nullable="false" />
+          <Property Name="file_name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="block_number" Type="int" Nullable="false" />
+          <Property Name="contents" Type="char" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'pm92_dev.dbo.impexp_log_summary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="impexp_log_summary">
+          <Key>
+            <PropertyRef Name="log_id" />
+          </Key>
+          <Property Name="log_id" Type="int" Nullable="false" />
+          <Property Name="no_debit_txns" Type="int" />
+          <Property Name="no_credit_txns" Type="int" />
+          <Property Name="val_credit_txns" Type="decimal" Precision="28" Scale="2" />
+          <Property Name="val_debit_txns" Type="decimal" Precision="28" Scale="2" />
+          <Property Name="statement_date" Type="datetime" />
+          <Property Name="val_bill_credit_txns" Type="decimal" Precision="28" Scale="2" />
+          <Property Name="val_bill_debit_txns" Type="decimal" Precision="28" Scale="2" />
+        </EntityType>
+        <EntityType Name="impexp_logdetails">
+          <Key>
+            <PropertyRef Name="log_id" />
+            <PropertyRef Name="line_no" />
+          </Key>
+          <Property Name="log_id" Type="int" Nullable="false" />
+          <Property Name="line_no" Type="int" Nullable="false" />
+          <Property Name="line" Type="text" />
+          <Property Name="create_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="impexp_order_types">
+          <Key>
+            <PropertyRef Name="view_name" />
+          </Key>
+          <Property Name="view_name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="display_name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="impexp_rules">
+          <Key>
+            <PropertyRef Name="activity" />
+            <PropertyRef Name="process_name" />
+            <PropertyRef Name="rule_order" />
+          </Key>
+          <Property Name="activity" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="process_name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="rule_order" Type="int" Nullable="false" />
+          <Property Name="transaction_type" Type="varchar" MaxLength="15" />
+          <Property Name="selection_ind" Type="char" MaxLength="1" />
+          <Property Name="accounts" Type="varchar" MaxLength="2000" />
+          <Property Name="gl_code" Type="varchar" MaxLength="255" />
+          <Property Name="tax_code" Type="varchar" MaxLength="12" />
+          <Property Name="tax_ind" Type="char" MaxLength="1" />
+          <Property Name="tax_override_expense" Type="char" MaxLength="1" />
+          <Property Name="sql_where" Type="text" />
+          <Property Name="description" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="expense_ind" Type="char" MaxLength="1" />
+          <Property Name="expense_type" Type="varchar" MaxLength="20" />
+          <Property Name="all_transaction_type" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'pm92_dev.dbo.impexp_schedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="impexp_schedule">
+          <Key>
+            <PropertyRef Name="activity" />
+            <PropertyRef Name="schedule_date" />
+            <PropertyRef Name="schedule_type" />
+            <PropertyRef Name="created_by" />
+            <PropertyRef Name="create_date" />
+          </Key>
+          <Property Name="activity" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="schedule_date" Type="datetime" Nullable="false" />
+          <Property Name="schedule_type" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="activity_subtype" Type="varchar" MaxLength="50" />
+          <Property Name="admin_id" Type="int" />
+          <Property Name="started_date" Type="datetime" />
+          <Property Name="stopped_date" Type="datetime" />
+          <Property Name="spid_log" Type="int" />
+          <Property Name="spid_admin" Type="int" />
+          <Property Name="spid_activity" Type="int" />
+          <Property Name="last_running_log_id" Type="int" />
+          <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_by" Type="varchar" MaxLength="50" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="unit_id" Type="varchar" MaxLength="50" />
+          <Property Name="group_name" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'pm92_dev.dbo.impexp_sql_actions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="impexp_sql_actions">
+          <Key>
+            <PropertyRef Name="activity" />
+            <PropertyRef Name="action_group" />
+            <PropertyRef Name="process_order" />
+          </Key>
+          <Property Name="activity" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="action_group" Type="int" Nullable="false" />
+          <Property Name="process_order" Type="int" Nullable="false" />
+          <Property Name="sql_order" Type="int" />
+          <Property Name="process_name" Type="varchar" MaxLength="20" />
+          <Property Name="sql_actions" Type="text" />
+          <Property Name="user_msg" Type="varchar" MaxLength="255" />
+          <Property Name="batch_label" Type="varchar" MaxLength="20" />
+          <Property Name="batch_command" Type="varchar" MaxLength="255" />
+          <Property Name="log_select_results" Type="int" />
+        </EntityType>
+        <Association Name="fk1_impexp_activity_parms">
+          <End Role="impexp_activities" Type="ProMasterModel.Store.impexp_activities" Multiplicity="1" />
+          <End Role="impexp_activity_parms" Type="ProMasterModel.Store.impexp_activity_parms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="impexp_activities">
+              <PropertyRef Name="activity" />
+            </Principal>
+            <Dependent Role="impexp_activity_parms">
+              <PropertyRef Name="activity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk1_impexp_logdetails">
+          <End Role="impexp_log" Type="ProMasterModel.Store.impexp_log" Multiplicity="1" />
+          <End Role="impexp_logdetails" Type="ProMasterModel.Store.impexp_logdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="impexp_log">
+              <PropertyRef Name="log_id" />
+            </Principal>
+            <Dependent Role="impexp_logdetails">
+              <PropertyRef Name="log_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProMasterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ProMasterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GlRules" EntityType="ProMasterModel.GlRules" />
+          <EntitySet Name="GlSegmentCodes" EntityType="ProMasterModel.GlSegmentCodes" />
+          <EntitySet Name="GlSegmentCodesUsers" EntityType="ProMasterModel.GlSegmentCodesUser" />
+          <EntitySet Name="GlSegmentDefns" EntityType="ProMasterModel.GlSegmentDefn" />
+          <EntitySet Name="GlTypes" EntityType="ProMasterModel.GlType" />
+          <EntitySet Name="GlViewSegments" EntityType="ProMasterModel.GlViewSegment" />
+          <EntitySet Name="GlViews" EntityType="ProMasterModel.GlView" />
+          <EntitySet Name="Activities1" EntityType="ProMasterModel.Activity" />
+          <EntitySet Name="ActivityParameters" EntityType="ProMasterModel.ActivityParameter" />
+          <EntitySet Name="ActivityEmails" EntityType="ProMasterModel.ActivityEmail" />
+          <EntitySet Name="ImportRulesLoadOrders" EntityType="ProMasterModel.ImportRulesLoadOrder" />
+          <EntitySet Name="ActivityLogs" EntityType="ProMasterModel.ActivityLog" />
+          <EntitySet Name="ActivityLogImportFiles" EntityType="ProMasterModel.ActivityLogImportFiles" />
+          <EntitySet Name="ActivityLogOutputFiles" EntityType="ProMasterModel.ActivityLogOutputFiles" />
+          <EntitySet Name="ActivityLogSummaries" EntityType="ProMasterModel.ActivityLogSummary" />
+          <EntitySet Name="ActivityLogDetails" EntityType="ProMasterModel.ActivityLogDetail" />
+          <EntitySet Name="ImportRuleOrderTypes" EntityType="ProMasterModel.ImportRuleOrderTypes" />
+          <EntitySet Name="ImportRules" EntityType="ProMasterModel.ImportRules" />
+          <EntitySet Name="ActivitySchedules" EntityType="ProMasterModel.ActivitySchedule" />
+          <EntitySet Name="ActivitySqlActions" EntityType="ProMasterModel.ActivitySqlActions" />
+          <AssociationSet Name="fk1_impexp_activity_parms" Association="ProMasterModel.fk1_impexp_activity_parms">
+            <End Role="impexp_activities" EntitySet="Activities1" />
+            <End Role="impexp_activity_parms" EntitySet="ActivityParameters" />
+          </AssociationSet>
+          <AssociationSet Name="fk1_impexp_logdetails" Association="ProMasterModel.fk1_impexp_logdetails">
+            <End Role="impexp_log" EntitySet="ActivityLogs" />
+            <End Role="impexp_logdetails" EntitySet="ActivityLogDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GlRules">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+            <PropertyRef Name="search_order" />
+          </Key>
+          <Property Name="gl_type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="view_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="search_order" Type="Int32" Nullable="false" />
+          <Property Name="segments" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="operator" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="erromsg" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="message2" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="GlSegmentCodes">
+          <Key>
+            <PropertyRef Name="segment_id" />
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="segment_id" Type="Int32" Nullable="false" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib3" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib4" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="active_flag" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="GlSegmentCodesUser">
+          <Key>
+            <PropertyRef Name="segment_id" />
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="segment_id" Type="Int32" Nullable="false" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib3" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib4" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="user_name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="expiry_date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="GlSegmentDefn">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="segment_id" />
+          </Key>
+          <Property Name="gl_type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="segment_id" Type="Int32" Nullable="false" />
+          <Property Name="error_text" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="label" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="char_limit" Type="Int32" Nullable="false" />
+          <Property Name="width" Type="Int32" Nullable="false" />
+          <Property Name="data_type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="validation_type" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="search_sql" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="row_warn" Type="Int32" />
+          <Property Name="search_win_defn" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="GlType">
+          <Key>
+            <PropertyRef Name="gl_type1" />
+          </Key>
+          <Property Name="gl_type1" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="delimiter" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="tab_no" Type="Int32" />
+          <Property Name="validation_type" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="GlViewSegment">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+            <PropertyRef Name="segment_id" />
+          </Key>
+          <Property Name="gl_type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="view_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="segment_id" Type="Int32" Nullable="false" />
+          <Property Name="position" Type="Int32" Nullable="false" />
+          <Property Name="dw_expression" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="required" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="search_sql" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="search_win_defn" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="GlView">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+          </Key>
+          <Property Name="gl_type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="view_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="load_order" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="activity" />
+          </Key>
+          <Property Type="String" Name="activity" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="status" Nullable="false" />
+          <Property Type="String" Name="activity_classname" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="parm_vo_classname" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="allow_auto_schedule" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="bitmap" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="impexp_activity_parms" Relationship="ProMasterModel.fk1_impexp_activity_parms" FromRole="impexp_activities" ToRole="impexp_activity_parms" />
+        </EntityType>
+        <EntityType Name="ActivityParameter">
+          <Key>
+            <PropertyRef Name="activity" />
+            <PropertyRef Name="field_name" />
+          </Key>
+          <Property Type="String" Name="activity" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="field_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="value_type" Nullable="false" />
+          <Property Type="String" Name="value_string" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="value_numeric" Precision="28" Scale="10" />
+          <Property Type="DateTime" Name="value_datetime" />
+          <NavigationProperty Name="impexp_activities" Relationship="ProMasterModel.fk1_impexp_activity_parms" FromRole="impexp_activity_parms" ToRole="impexp_activities" />
+        </EntityType>
+        <EntityType Name="ActivityEmail">
+          <Key>
+            <PropertyRef Name="user_name" />
+            <PropertyRef Name="activity" />
+          </Key>
+          <Property Type="String" Name="user_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="activity" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="email_option" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ImportRulesLoadOrder">
+          <Key>
+            <PropertyRef Name="activity" />
+            <PropertyRef Name="process_name" />
+            <PropertyRef Name="rule_order" />
+            <PropertyRef Name="view_name" />
+          </Key>
+          <Property Type="String" Name="activity" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="process_name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="rule_order" Nullable="false" />
+          <Property Type="String" Name="view_name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="load_order" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivityLog">
+          <Key>
+            <PropertyRef Name="log_id" />
+          </Key>
+          <Property Type="Int32" Name="log_id" Nullable="false" />
+          <Property Type="String" Name="activity" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="log_date" Nullable="false" />
+          <Property Type="Int32" Name="run_rc" Nullable="false" />
+          <Property Type="String" Name="description" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="impexp_logdetails" Relationship="ProMasterModel.fk1_impexp_logdetails" FromRole="impexp_log" ToRole="impexp_logdetails" />
+        </EntityType>
+        <EntityType Name="ActivityLogImportFiles">
+          <Key>
+            <PropertyRef Name="impexp_log_importfile_id" />
+          </Key>
+          <Property Type="Int32" Name="impexp_log_importfile_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="log_id" Nullable="false" />
+          <Property Type="String" Name="file_name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="date_loaded" Nullable="false" />
+          <Property Type="String" Name="success" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="file_hash" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="unit_id" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="failure_reason" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="renamed_file_name" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ActivityLogOutputFiles">
+          <Key>
+            <PropertyRef Name="log_id" />
+            <PropertyRef Name="file_name" />
+            <PropertyRef Name="block_number" />
+          </Key>
+          <Property Type="Int32" Name="log_id" Nullable="false" />
+          <Property Type="String" Name="file_name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="block_number" Nullable="false" />
+          <Property Type="String" Name="contents" MaxLength="255" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ActivityLogSummary">
+          <Key>
+            <PropertyRef Name="log_id" />
+          </Key>
+          <Property Type="Int32" Name="log_id" Nullable="false" />
+          <Property Type="Int32" Name="no_debit_txns" />
+          <Property Type="Int32" Name="no_credit_txns" />
+          <Property Type="Decimal" Name="val_credit_txns" Precision="28" Scale="2" />
+          <Property Type="Decimal" Name="val_debit_txns" Precision="28" Scale="2" />
+          <Property Type="DateTime" Name="statement_date" />
+          <Property Type="Decimal" Name="val_bill_credit_txns" Precision="28" Scale="2" />
+          <Property Type="Decimal" Name="val_bill_debit_txns" Precision="28" Scale="2" />
+        </EntityType>
+        <EntityType Name="ActivityLogDetail">
+          <Key>
+            <PropertyRef Name="log_id" />
+            <PropertyRef Name="line_no" />
+          </Key>
+          <Property Type="Int32" Name="log_id" Nullable="false" />
+          <Property Type="Int32" Name="line_no" Nullable="false" />
+          <Property Type="String" Name="line" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="create_date" />
+          <NavigationProperty Name="impexp_log" Relationship="ProMasterModel.fk1_impexp_logdetails" FromRole="impexp_logdetails" ToRole="impexp_log" />
+        </EntityType>
+        <EntityType Name="ImportRuleOrderTypes">
+          <Key>
+            <PropertyRef Name="view_name" />
+          </Key>
+          <Property Type="String" Name="view_name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="display_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ImportRules">
+          <Key>
+            <PropertyRef Name="activity" />
+            <PropertyRef Name="process_name" />
+            <PropertyRef Name="rule_order" />
+          </Key>
+          <Property Type="String" Name="activity" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="process_name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="rule_order" Nullable="false" />
+          <Property Type="String" Name="transaction_type" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="selection_ind" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="accounts" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="gl_code" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="tax_code" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="tax_ind" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="tax_override_expense" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sql_where" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="expense_ind" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="expense_type" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="all_transaction_type" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ActivitySchedule">
+          <Key>
+            <PropertyRef Name="activity" />
+            <PropertyRef Name="schedule_date" />
+            <PropertyRef Name="schedule_type" />
+            <PropertyRef Name="created_by" />
+            <PropertyRef Name="create_date" />
+          </Key>
+          <Property Type="String" Name="activity" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="schedule_date" Nullable="false" />
+          <Property Type="String" Name="schedule_type" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="activity_subtype" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="admin_id" />
+          <Property Type="DateTime" Name="started_date" />
+          <Property Type="DateTime" Name="stopped_date" />
+          <Property Type="Int32" Name="spid_log" />
+          <Property Type="Int32" Name="spid_admin" />
+          <Property Type="Int32" Name="spid_activity" />
+          <Property Type="Int32" Name="last_running_log_id" />
+          <Property Type="String" Name="created_by" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="create_date" Nullable="false" />
+          <Property Type="String" Name="modified_by" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="modify_date" />
+          <Property Type="String" Name="unit_id" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="group_name" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ActivitySqlActions">
+          <Key>
+            <PropertyRef Name="activity" />
+            <PropertyRef Name="action_group" />
+            <PropertyRef Name="process_order" />
+          </Key>
+          <Property Type="String" Name="activity" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="action_group" Nullable="false" />
+          <Property Type="Int32" Name="process_order" Nullable="false" />
+          <Property Type="Int32" Name="sql_order" />
+          <Property Type="String" Name="process_name" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="sql_actions" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="user_msg" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="batch_label" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="batch_command" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="log_select_results" />
+        </EntityType>
+        <Association Name="fk1_impexp_activity_parms">
+          <End Type="ProMasterModel.Activity" Role="impexp_activities" Multiplicity="1" />
+          <End Type="ProMasterModel.ActivityParameter" Role="impexp_activity_parms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="impexp_activities">
+              <PropertyRef Name="activity" />
+            </Principal>
+            <Dependent Role="impexp_activity_parms">
+              <PropertyRef Name="activity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk1_impexp_logdetails">
+          <End Type="ProMasterModel.ActivityLog" Role="impexp_log" Multiplicity="1" />
+          <End Type="ProMasterModel.ActivityLogDetail" Role="impexp_logdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="impexp_log">
+              <PropertyRef Name="log_id" />
+            </Principal>
+            <Dependent Role="impexp_logdetails">
+              <PropertyRef Name="log_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProMasterModelStoreContainer" CdmEntityContainer="ProMasterEntities">
+          <EntitySetMapping Name="GlRules"><EntityTypeMapping TypeName="ProMasterModel.GlRules"><MappingFragment StoreEntitySet="gl_rules">
+            <ScalarProperty Name="gl_type" ColumnName="gl_type" />
+            <ScalarProperty Name="view_name" ColumnName="view_name" />
+            <ScalarProperty Name="search_order" ColumnName="search_order" />
+            <ScalarProperty Name="segments" ColumnName="segments" />
+            <ScalarProperty Name="operator" ColumnName="operator" />
+            <ScalarProperty Name="erromsg" ColumnName="erromsg" />
+            <ScalarProperty Name="message2" ColumnName="message2" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GlSegmentCodes"><EntityTypeMapping TypeName="ProMasterModel.GlSegmentCodes"><MappingFragment StoreEntitySet="gl_segment_codes">
+            <ScalarProperty Name="segment_id" ColumnName="segment_id" />
+            <ScalarProperty Name="code" ColumnName="code" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="attrib1" ColumnName="attrib1" />
+            <ScalarProperty Name="attrib2" ColumnName="attrib2" />
+            <ScalarProperty Name="attrib3" ColumnName="attrib3" />
+            <ScalarProperty Name="attrib4" ColumnName="attrib4" />
+            <ScalarProperty Name="active_flag" ColumnName="active_flag" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GlSegmentCodesUsers"><EntityTypeMapping TypeName="ProMasterModel.GlSegmentCodesUser"><MappingFragment StoreEntitySet="gl_segment_codes_user">
+            <ScalarProperty Name="segment_id" ColumnName="segment_id" />
+            <ScalarProperty Name="code" ColumnName="code" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="attrib1" ColumnName="attrib1" />
+            <ScalarProperty Name="attrib2" ColumnName="attrib2" />
+            <ScalarProperty Name="attrib3" ColumnName="attrib3" />
+            <ScalarProperty Name="attrib4" ColumnName="attrib4" />
+            <ScalarProperty Name="user_name" ColumnName="user_name" />
+            <ScalarProperty Name="expiry_date" ColumnName="expiry_date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GlSegmentDefns"><EntityTypeMapping TypeName="ProMasterModel.GlSegmentDefn"><MappingFragment StoreEntitySet="gl_segment_defn">
+            <ScalarProperty Name="gl_type" ColumnName="gl_type" />
+            <ScalarProperty Name="segment_id" ColumnName="segment_id" />
+            <ScalarProperty Name="error_text" ColumnName="error_text" />
+            <ScalarProperty Name="label" ColumnName="label" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="char_limit" ColumnName="char_limit" />
+            <ScalarProperty Name="width" ColumnName="width" />
+            <ScalarProperty Name="data_type" ColumnName="data_type" />
+            <ScalarProperty Name="validation_type" ColumnName="validation_type" />
+            <ScalarProperty Name="search_sql" ColumnName="search_sql" />
+            <ScalarProperty Name="row_warn" ColumnName="row_warn" />
+            <ScalarProperty Name="search_win_defn" ColumnName="search_win_defn" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GlTypes"><EntityTypeMapping TypeName="ProMasterModel.GlType"><MappingFragment StoreEntitySet="gl_type">
+            <ScalarProperty Name="gl_type1" ColumnName="gl_type" />
+            <ScalarProperty Name="delimiter" ColumnName="delimiter" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="status" ColumnName="status" />
+            <ScalarProperty Name="tab_no" ColumnName="tab_no" />
+            <ScalarProperty Name="validation_type" ColumnName="validation_type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GlViewSegments"><EntityTypeMapping TypeName="ProMasterModel.GlViewSegment"><MappingFragment StoreEntitySet="gl_view_segments">
+            <ScalarProperty Name="gl_type" ColumnName="gl_type" />
+            <ScalarProperty Name="view_name" ColumnName="view_name" />
+            <ScalarProperty Name="segment_id" ColumnName="segment_id" />
+            <ScalarProperty Name="position" ColumnName="position" />
+            <ScalarProperty Name="dw_expression" ColumnName="dw_expression" />
+            <ScalarProperty Name="required" ColumnName="required" />
+            <ScalarProperty Name="search_sql" ColumnName="search_sql" />
+            <ScalarProperty Name="search_win_defn" ColumnName="search_win_defn" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GlViews"><EntityTypeMapping TypeName="ProMasterModel.GlView"><MappingFragment StoreEntitySet="gl_views">
+            <ScalarProperty Name="gl_type" ColumnName="gl_type" />
+            <ScalarProperty Name="view_name" ColumnName="view_name" />
+            <ScalarProperty Name="load_order" ColumnName="load_order" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Activities1">
+            <EntityTypeMapping TypeName="ProMasterModel.Activity">
+              <MappingFragment StoreEntitySet="impexp_activities">
+                <ScalarProperty Name="bitmap" ColumnName="bitmap" />
+                <ScalarProperty Name="allow_auto_schedule" ColumnName="allow_auto_schedule" />
+                <ScalarProperty Name="parm_vo_classname" ColumnName="parm_vo_classname" />
+                <ScalarProperty Name="activity_classname" ColumnName="activity_classname" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="activity" ColumnName="activity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityParameters">
+            <EntityTypeMapping TypeName="ProMasterModel.ActivityParameter">
+              <MappingFragment StoreEntitySet="impexp_activity_parms">
+                <ScalarProperty Name="value_datetime" ColumnName="value_datetime" />
+                <ScalarProperty Name="value_numeric" ColumnName="value_numeric" />
+                <ScalarProperty Name="value_string" ColumnName="value_string" />
+                <ScalarProperty Name="value_type" ColumnName="value_type" />
+                <ScalarProperty Name="field_name" ColumnName="field_name" />
+                <ScalarProperty Name="activity" ColumnName="activity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityEmails">
+            <EntityTypeMapping TypeName="ProMasterModel.ActivityEmail">
+              <MappingFragment StoreEntitySet="impexp_email">
+                <ScalarProperty Name="email_option" ColumnName="email_option" />
+                <ScalarProperty Name="activity" ColumnName="activity" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImportRulesLoadOrders">
+            <EntityTypeMapping TypeName="ProMasterModel.ImportRulesLoadOrder">
+              <MappingFragment StoreEntitySet="impexp_load_order">
+                <ScalarProperty Name="load_order" ColumnName="load_order" />
+                <ScalarProperty Name="view_name" ColumnName="view_name" />
+                <ScalarProperty Name="rule_order" ColumnName="rule_order" />
+                <ScalarProperty Name="process_name" ColumnName="process_name" />
+                <ScalarProperty Name="activity" ColumnName="activity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityLogs">
+            <EntityTypeMapping TypeName="ProMasterModel.ActivityLog">
+              <MappingFragment StoreEntitySet="impexp_log">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="run_rc" ColumnName="run_rc" />
+                <ScalarProperty Name="log_date" ColumnName="log_date" />
+                <ScalarProperty Name="activity" ColumnName="activity" />
+                <ScalarProperty Name="log_id" ColumnName="log_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityLogImportFiles">
+            <EntityTypeMapping TypeName="ProMasterModel.ActivityLogImportFiles">
+              <MappingFragment StoreEntitySet="impexp_log_importfiles">
+                <ScalarProperty Name="renamed_file_name" ColumnName="renamed_file_name" />
+                <ScalarProperty Name="failure_reason" ColumnName="failure_reason" />
+                <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+                <ScalarProperty Name="file_hash" ColumnName="file_hash" />
+                <ScalarProperty Name="success" ColumnName="success" />
+                <ScalarProperty Name="date_loaded" ColumnName="date_loaded" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="log_id" ColumnName="log_id" />
+                <ScalarProperty Name="impexp_log_importfile_id" ColumnName="impexp_log_importfile_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityLogOutputFiles">
+            <EntityTypeMapping TypeName="ProMasterModel.ActivityLogOutputFiles">
+              <MappingFragment StoreEntitySet="impexp_log_output_files">
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="block_number" ColumnName="block_number" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="log_id" ColumnName="log_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityLogSummaries">
+            <EntityTypeMapping TypeName="ProMasterModel.ActivityLogSummary">
+              <MappingFragment StoreEntitySet="impexp_log_summary">
+                <ScalarProperty Name="val_bill_debit_txns" ColumnName="val_bill_debit_txns" />
+                <ScalarProperty Name="val_bill_credit_txns" ColumnName="val_bill_credit_txns" />
+                <ScalarProperty Name="statement_date" ColumnName="statement_date" />
+                <ScalarProperty Name="val_debit_txns" ColumnName="val_debit_txns" />
+                <ScalarProperty Name="val_credit_txns" ColumnName="val_credit_txns" />
+                <ScalarProperty Name="no_credit_txns" ColumnName="no_credit_txns" />
+                <ScalarProperty Name="no_debit_txns" ColumnName="no_debit_txns" />
+                <ScalarProperty Name="log_id" ColumnName="log_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityLogDetails">
+            <EntityTypeMapping TypeName="ProMasterModel.ActivityLogDetail">
+              <MappingFragment StoreEntitySet="impexp_logdetails">
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="line" ColumnName="line" />
+                <ScalarProperty Name="line_no" ColumnName="line_no" />
+                <ScalarProperty Name="log_id" ColumnName="log_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImportRuleOrderTypes">
+            <EntityTypeMapping TypeName="ProMasterModel.ImportRuleOrderTypes">
+              <MappingFragment StoreEntitySet="impexp_order_types">
+                <ScalarProperty Name="display_name" ColumnName="display_name" />
+                <ScalarProperty Name="view_name" ColumnName="view_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImportRules">
+            <EntityTypeMapping TypeName="ProMasterModel.ImportRules">
+              <MappingFragment StoreEntitySet="impexp_rules">
+                <ScalarProperty Name="all_transaction_type" ColumnName="all_transaction_type" />
+                <ScalarProperty Name="expense_type" ColumnName="expense_type" />
+                <ScalarProperty Name="expense_ind" ColumnName="expense_ind" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="sql_where" ColumnName="sql_where" />
+                <ScalarProperty Name="tax_override_expense" ColumnName="tax_override_expense" />
+                <ScalarProperty Name="tax_ind" ColumnName="tax_ind" />
+                <ScalarProperty Name="tax_code" ColumnName="tax_code" />
+                <ScalarProperty Name="gl_code" ColumnName="gl_code" />
+                <ScalarProperty Name="accounts" ColumnName="accounts" />
+                <ScalarProperty Name="selection_ind" ColumnName="selection_ind" />
+                <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
+                <ScalarProperty Name="rule_order" ColumnName="rule_order" />
+                <ScalarProperty Name="process_name" ColumnName="process_name" />
+                <ScalarProperty Name="activity" ColumnName="activity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivitySchedules">
+            <EntityTypeMapping TypeName="ProMasterModel.ActivitySchedule">
+              <MappingFragment StoreEntitySet="impexp_schedule">
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+                <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="last_running_log_id" ColumnName="last_running_log_id" />
+                <ScalarProperty Name="spid_activity" ColumnName="spid_activity" />
+                <ScalarProperty Name="spid_admin" ColumnName="spid_admin" />
+                <ScalarProperty Name="spid_log" ColumnName="spid_log" />
+                <ScalarProperty Name="stopped_date" ColumnName="stopped_date" />
+                <ScalarProperty Name="started_date" ColumnName="started_date" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="activity_subtype" ColumnName="activity_subtype" />
+                <ScalarProperty Name="schedule_type" ColumnName="schedule_type" />
+                <ScalarProperty Name="schedule_date" ColumnName="schedule_date" />
+                <ScalarProperty Name="activity" ColumnName="activity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivitySqlActions">
+            <EntityTypeMapping TypeName="ProMasterModel.ActivitySqlActions">
+              <MappingFragment StoreEntitySet="impexp_sql_actions">
+                <ScalarProperty Name="log_select_results" ColumnName="log_select_results" />
+                <ScalarProperty Name="batch_command" ColumnName="batch_command" />
+                <ScalarProperty Name="batch_label" ColumnName="batch_label" />
+                <ScalarProperty Name="user_msg" ColumnName="user_msg" />
+                <ScalarProperty Name="sql_actions" ColumnName="sql_actions" />
+                <ScalarProperty Name="process_name" ColumnName="process_name" />
+                <ScalarProperty Name="sql_order" ColumnName="sql_order" />
+                <ScalarProperty Name="process_order" ColumnName="process_order" />
+                <ScalarProperty Name="action_group" ColumnName="action_group" />
+                <ScalarProperty Name="activity" ColumnName="activity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ProMasterModel">
+        <EntityTypeShape EntityType="ProMasterModel.GlRules" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.GlSegmentCodes" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.GlSegmentCodesUser" Width="1.5" PointX="4.75" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.GlSegmentDefn" Width="1.5" PointX="0.75" PointY="4.75" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.GlType" Width="1.5" PointX="2.75" PointY="4.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.GlViewSegment" Width="1.5" PointX="4.75" PointY="4.75" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.GlView" Width="1.5" PointX="2.75" PointY="7.25" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.Activity" Width="1.5" PointX="7.25" PointY="0.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="ProMasterModel.ActivityParameter" Width="1.75" PointX="9.25" PointY="0.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="ProMasterModel.ActivityEmail" Width="1.5" PointX="12.25" PointY="0.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="ProMasterModel.ImportRulesLoadOrder" Width="2" PointX="9.125" PointY="11" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="ProMasterModel.ActivityLog" Width="1.5" PointX="7.25" PointY="3.625" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="ProMasterModel.ActivityLogImportFiles" Width="2.375" PointX="9.375" PointY="6.125" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="ProMasterModel.ActivityLogOutputFiles" Width="2" PointX="7" PointY="6.125" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="ProMasterModel.ActivityLogSummary" Width="1.875" PointX="7" PointY="8.125" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="ProMasterModel.ActivityLogDetail" Width="1.625" PointX="9.375" PointY="3.625" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="ProMasterModel.ImportRuleOrderTypes" Width="1.875" PointX="7" PointY="11" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="ProMasterModel.ImportRules" Width="1.5" PointX="11.375" PointY="11" Height="3.9033007812500031" />
+        <EntityTypeShape EntityType="ProMasterModel.ActivitySchedule" Width="1.5" PointX="12.25" PointY="2.75" Height="4.2879036458333317" />
+        <EntityTypeShape EntityType="ProMasterModel.ActivitySqlActions" Width="1.75" PointX="11.875" PointY="7.375" Height="2.9417936197916674" />
+        <AssociationConnector Association="ProMasterModel.fk1_impexp_activity_parms" >
+          <ConnectorPoint PointX="8.75" PointY="1.9324446614583337" />
+          <ConnectorPoint PointX="9.25" PointY="1.9324446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="ProMasterModel.fk1_impexp_logdetails" >
+          <ConnectorPoint PointX="8.75" PointY="4.6151432291666694" />
+          <ConnectorPoint PointX="9.375" PointY="4.6151432291666694" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

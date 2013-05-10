@@ -22,19 +22,19 @@ namespace ProMasterAssistant.Controllers
         }
 
 		[HttpPost]
-		public JsonResult Add(string connName, string connString)
+		public JsonResult Add(string connName, string serverName, string databaseName, string userId, string password)
 		{
-			try
-			{
-				db.UserConnectionStrings.AddObject(
-					new UserConnectionString { UserName = User.Identity.Name, ConnectionName = connName, ConnectionString = connString });
-				db.SaveChanges();
-			}
-			catch (Exception e)
-			{
+			//try
+			//{
+			//    db.UserConnectionStrings.AddObject(
+			//        new UserConnectionString { UserName = User.Identity.Name, ConnectionName = connName, ConnectionString = connString });
+			//    db.SaveChanges();
+			//}
+			//catch (Exception e)
+			//{
 
-				return Json(new { status = "error", message = e.Message });
-			}
+			//    return Json(new { status = "error", message = e.Message });
+			//}
 
 			return Json(new { status = "ok", message = "" });
 		}

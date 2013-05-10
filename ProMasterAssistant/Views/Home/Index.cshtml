@@ -3,19 +3,13 @@
 <div class="main-container">
 	<br/><br/>
 	<a href="#add-dialog" role="button" class="btn" data-toggle="modal">Add Connection...</a>
+	<a href="#del-dialog" role="button" class="btn" data-toggle="modal">Delete Connection...</a>
 	<br/><br/>
-	<table id="list" class="connections">
+	<table class="connections">
 		<thead>
-			<tr><th colspan="2">Connections</th></tr>
+			<tr><th>Name</th><th>Server</th><th>Database</th><th>UserId</th><th>Password</th></tr>
 		</thead>
-		<tbody>
-			@foreach(var item in Model)
-			{
-				<tr>
-					<td>@item.ConnectionName</td>
-					<td>@item.ConnectionString</td>
-				</tr>	
-			}
+		<tbody id="list">
 		</tbody>
 	</table>
 </div>
@@ -33,9 +27,25 @@
 				<input class="input-large" autofocus type="text" id="connection_name" name="connection_name" maxlength="50" required="required"/>
 			</div>
 			<div class="control-group">
-				<label for="connection_string">Connection String</label>
-				<input class="input-xxlarge" type="text" id="connection_string" name="connection_string" maxlength="255" required="required" placeholder="Server=;Database=;User Id=;Password=;" size="80"/>
+				<label for="connection_string">Server Name</label>
+				<input class="input-xxlarge" type="text" id="server_name" name="server_name" maxlength="255" required="required" placeholder="Server=;Database=;User Id=;Password=;" size="80"/>
 			</div>
+
+			<div class="control-group">
+				<label for="connection_string">Database Name</label>
+				<input class="input-xxlarge" type="text" id="database_name" name="database_name" maxlength="255" required="required" placeholder="Server=;Database=;User Id=;Password=;" size="80"/>
+			</div>
+
+			<div class="control-group">
+				<label for="connection_string">User ID</label>
+				<input class="input-xxlarge" type="text" id="user_id" name="user_id" maxlength="255" required="required" placeholder="Server=;Database=;User Id=;Password=;" size="80"/>
+			</div>
+
+			<div class="control-group">
+				<label for="connection_string">Password</label>
+				<input class="input-xxlarge" type="text" id="password" name="password" maxlength="255" required="required" placeholder="Server=;Database=;User Id=;Password=;" size="80"/>
+			</div>
+
 		</div>
 	</form>
 	<div class="modal-footer">
