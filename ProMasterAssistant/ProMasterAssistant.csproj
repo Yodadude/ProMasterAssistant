@@ -131,6 +131,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="MainMenuAttribute.cs" />
+    <Compile Include="Models\ConnectionSettingsModel.cs" />
     <Compile Include="Models\ConnectionsModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -147,6 +148,11 @@
     <Compile Include="Controllers\WorkflowController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProMaster.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProMaster.edmx</DependentUpon>
     </Compile>
     <Compile Include="ProMasterModel.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -214,6 +220,10 @@
     <EntityDeploy Include="ProMasterModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProMasterModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\ProMaster.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProMaster.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>

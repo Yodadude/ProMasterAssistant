@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProMasterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ProMasterModelStoreContainer">
+          <EntitySet Name="gl_rules" EntityType="ProMasterModel.Store.gl_rules" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="gl_segment_codes" EntityType="ProMasterModel.Store.gl_segment_codes" store:Type="Tables" store:Schema="dbo" store:Name="gl_segment_codes">
+            <DefiningQuery>SELECT 
+      [gl_segment_codes].[segment_id] AS [segment_id], 
+      [gl_segment_codes].[code] AS [code], 
+      [gl_segment_codes].[description] AS [description], 
+      [gl_segment_codes].[attrib1] AS [attrib1], 
+      [gl_segment_codes].[attrib2] AS [attrib2], 
+      [gl_segment_codes].[attrib3] AS [attrib3], 
+      [gl_segment_codes].[attrib4] AS [attrib4], 
+      [gl_segment_codes].[active_flag] AS [active_flag]
+      FROM [dbo].[gl_segment_codes] AS [gl_segment_codes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="gl_segment_defn" EntityType="ProMasterModel.Store.gl_segment_defn" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="gl_type" EntityType="ProMasterModel.Store.gl_type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="gl_view_segments" EntityType="ProMasterModel.Store.gl_view_segments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="gl_views" EntityType="ProMasterModel.Store.gl_views" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="gl_rules">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+            <PropertyRef Name="search_order" />
+          </Key>
+          <Property Name="gl_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="view_name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="search_order" Type="int" Nullable="false" />
+          <Property Name="segments" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="operator" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="erromsg" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="message2" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'pm95_dev.dbo.gl_segment_codes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="gl_segment_codes">
+          <Key>
+            <PropertyRef Name="segment_id" />
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="segment_id" Type="int" Nullable="false" />
+          <Property Name="code" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="100" />
+          <Property Name="attrib1" Type="varchar" MaxLength="100" />
+          <Property Name="attrib2" Type="varchar" MaxLength="100" />
+          <Property Name="attrib3" Type="varchar" MaxLength="100" />
+          <Property Name="attrib4" Type="varchar" MaxLength="100" />
+          <Property Name="active_flag" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="gl_segment_defn">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="segment_id" />
+          </Key>
+          <Property Name="gl_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="segment_id" Type="int" Nullable="false" />
+          <Property Name="error_text" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="label" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="char_limit" Type="int" Nullable="false" />
+          <Property Name="width" Type="int" Nullable="false" />
+          <Property Name="data_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="validation_type" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="search_sql" Type="text" />
+          <Property Name="row_warn" Type="int" />
+          <Property Name="search_win_defn" Type="text" />
+        </EntityType>
+        <EntityType Name="gl_type">
+          <Key>
+            <PropertyRef Name="gl_type" />
+          </Key>
+          <Property Name="gl_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="delimiter" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="description" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="tab_no" Type="int" />
+          <Property Name="validation_type" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="gl_view_segments">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+            <PropertyRef Name="segment_id" />
+          </Key>
+          <Property Name="gl_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="view_name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="segment_id" Type="int" Nullable="false" />
+          <Property Name="position" Type="int" Nullable="false" />
+          <Property Name="dw_expression" Type="text" />
+          <Property Name="required" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="search_sql" Type="text" />
+          <Property Name="search_win_defn" Type="text" />
+        </EntityType>
+        <EntityType Name="gl_views">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+          </Key>
+          <Property Name="gl_type" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="view_name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="load_order" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProMasterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ProMasterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="gl_rules" EntityType="ProMasterModel.gl_rules" />
+          <EntitySet Name="gl_segment_codes" EntityType="ProMasterModel.gl_segment_codes" />
+          <EntitySet Name="gl_segment_defn" EntityType="ProMasterModel.gl_segment_defn" />
+          <EntitySet Name="gl_type" EntityType="ProMasterModel.gl_type" />
+          <EntitySet Name="gl_view_segments" EntityType="ProMasterModel.gl_view_segments" />
+          <EntitySet Name="gl_views" EntityType="ProMasterModel.gl_views" />
+        </EntityContainer>
+        <EntityType Name="gl_rules">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+            <PropertyRef Name="search_order" />
+          </Key>
+          <Property Name="gl_type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="view_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="search_order" Type="Int32" Nullable="false" />
+          <Property Name="segments" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="operator" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="erromsg" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="message2" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="gl_segment_codes">
+          <Key>
+            <PropertyRef Name="segment_id" />
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="segment_id" Type="Int32" Nullable="false" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib3" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="attrib4" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="active_flag" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="gl_segment_defn">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="segment_id" />
+          </Key>
+          <Property Name="gl_type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="segment_id" Type="Int32" Nullable="false" />
+          <Property Name="error_text" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="label" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="char_limit" Type="Int32" Nullable="false" />
+          <Property Name="width" Type="Int32" Nullable="false" />
+          <Property Name="data_type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="validation_type" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="search_sql" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="row_warn" Type="Int32" />
+          <Property Name="search_win_defn" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="gl_type">
+          <Key>
+            <PropertyRef Name="gl_type1" />
+          </Key>
+          <Property Name="gl_type1" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="delimiter" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="tab_no" Type="Int32" />
+          <Property Name="validation_type" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="gl_view_segments">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+            <PropertyRef Name="segment_id" />
+          </Key>
+          <Property Name="gl_type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="view_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="segment_id" Type="Int32" Nullable="false" />
+          <Property Name="position" Type="Int32" Nullable="false" />
+          <Property Name="dw_expression" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="required" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="search_sql" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="search_win_defn" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="gl_views">
+          <Key>
+            <PropertyRef Name="gl_type" />
+            <PropertyRef Name="view_name" />
+          </Key>
+          <Property Name="gl_type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="view_name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="load_order" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProMasterModelStoreContainer" CdmEntityContainer="ProMasterEntities">
+          <EntitySetMapping Name="gl_rules">
+            <EntityTypeMapping TypeName="ProMasterModel.gl_rules">
+              <MappingFragment StoreEntitySet="gl_rules">
+                <ScalarProperty Name="gl_type" ColumnName="gl_type" />
+                <ScalarProperty Name="view_name" ColumnName="view_name" />
+                <ScalarProperty Name="search_order" ColumnName="search_order" />
+                <ScalarProperty Name="segments" ColumnName="segments" />
+                <ScalarProperty Name="operator" ColumnName="operator" />
+                <ScalarProperty Name="erromsg" ColumnName="erromsg" />
+                <ScalarProperty Name="message2" ColumnName="message2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gl_segment_codes">
+            <EntityTypeMapping TypeName="ProMasterModel.gl_segment_codes">
+              <MappingFragment StoreEntitySet="gl_segment_codes">
+                <ScalarProperty Name="segment_id" ColumnName="segment_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="attrib1" ColumnName="attrib1" />
+                <ScalarProperty Name="attrib2" ColumnName="attrib2" />
+                <ScalarProperty Name="attrib3" ColumnName="attrib3" />
+                <ScalarProperty Name="attrib4" ColumnName="attrib4" />
+                <ScalarProperty Name="active_flag" ColumnName="active_flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gl_segment_defn">
+            <EntityTypeMapping TypeName="ProMasterModel.gl_segment_defn">
+              <MappingFragment StoreEntitySet="gl_segment_defn">
+                <ScalarProperty Name="gl_type" ColumnName="gl_type" />
+                <ScalarProperty Name="segment_id" ColumnName="segment_id" />
+                <ScalarProperty Name="error_text" ColumnName="error_text" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="char_limit" ColumnName="char_limit" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="data_type" ColumnName="data_type" />
+                <ScalarProperty Name="validation_type" ColumnName="validation_type" />
+                <ScalarProperty Name="search_sql" ColumnName="search_sql" />
+                <ScalarProperty Name="row_warn" ColumnName="row_warn" />
+                <ScalarProperty Name="search_win_defn" ColumnName="search_win_defn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gl_type">
+            <EntityTypeMapping TypeName="ProMasterModel.gl_type">
+              <MappingFragment StoreEntitySet="gl_type">
+                <ScalarProperty Name="gl_type1" ColumnName="gl_type" />
+                <ScalarProperty Name="delimiter" ColumnName="delimiter" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="tab_no" ColumnName="tab_no" />
+                <ScalarProperty Name="validation_type" ColumnName="validation_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gl_view_segments">
+            <EntityTypeMapping TypeName="ProMasterModel.gl_view_segments">
+              <MappingFragment StoreEntitySet="gl_view_segments">
+                <ScalarProperty Name="gl_type" ColumnName="gl_type" />
+                <ScalarProperty Name="view_name" ColumnName="view_name" />
+                <ScalarProperty Name="segment_id" ColumnName="segment_id" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="dw_expression" ColumnName="dw_expression" />
+                <ScalarProperty Name="required" ColumnName="required" />
+                <ScalarProperty Name="search_sql" ColumnName="search_sql" />
+                <ScalarProperty Name="search_win_defn" ColumnName="search_win_defn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gl_views">
+            <EntityTypeMapping TypeName="ProMasterModel.gl_views">
+              <MappingFragment StoreEntitySet="gl_views">
+                <ScalarProperty Name="gl_type" ColumnName="gl_type" />
+                <ScalarProperty Name="view_name" ColumnName="view_name" />
+                <ScalarProperty Name="load_order" ColumnName="load_order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ProMaster">
+        <EntityTypeShape EntityType="ProMasterModel.gl_rules" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.gl_segment_codes" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.gl_segment_defn" Width="1.5" PointX="4.75" PointY="0.75" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.gl_type" Width="1.5" PointX="0.75" PointY="4.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.gl_view_segments" Width="1.5" PointX="2.75" PointY="5.75" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProMasterModel.gl_views" Width="1.5" PointX="4.75" PointY="5.75" Height="1.5956835937499996" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

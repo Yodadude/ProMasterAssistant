@@ -1,26 +1,9 @@
 ﻿
-//if (!window.JSON) {
-//	window.JSON = {
-//		parse: function (sJson) { return eval("(" + sJson + ")"); },
-//		stringify: function (vContent) {
-//			if (vContent instanceof Object) {
-//				var sOutput = "";
-//				if (vContent.constructor === Array) {
-//					for (var nId = 0; nId < vContent.length; sOutput += this.stringify(vContent[nId]) + ",", nId++);
-//					return "[" + sOutput.substr(0, sOutput.length - 1) + "]";
-//				}
-//				if (vContent.toString !== Object.prototype.toString) { return "\"" + vContent.toString().replace(/"/g, "\\$&") + "\""; }
-//				for (var sProp in vContent) { sOutput += "\"" + sProp.replace(/"/g, "\\$&") + "\":" + this.stringify(vContent[sProp]) + ","; }
-//				return "{" + sOutput.substr(0, sOutput.length - 1) + "}";
-//			}
-//			return typeof vContent === "string" ? "\"" + vContent.replace(/"/g, "\\$&") + "\"" : String(vContent);
-//		}
-//	};
-//}
-
 $(function () {
-	$("#savebtn").click(saveConnection);
+	$("#list tr").live("click", handleSelect);
+	$("#savebtn").click(validateConnection);
 	$("#delbtn").click(deleteConnection);
+	$("#setbtn").click(setActiveConnection);
 	$("#list tr").hover(
 		function () {
 			$(this).addClass("highlight");
@@ -29,17 +12,17 @@ $(function () {
 			$(this).removeClass("highlight");
 		}
 	);
-
-	$("#list tr").live("click", handleSelect);
-
-	displayConnections();
-	
+	displayConnections();	
 });
 
 
 function displayConnections() {
 
 	var connections = localStorage.getItem("connections");
+
+	if (connections === undefined)
+		return;
+
 	var conns = JSON.parse(connections);
 
 	if (conns.length) {
@@ -56,7 +39,7 @@ function handleSelect() {
 }
 
 
-function saveConnection() {
+function validateConnection() {
 
 	var connName = $("#connection_name");
 	var serverName = $("#server_name");
@@ -71,7 +54,7 @@ function saveConnection() {
 		connName.parent().addClass("error");
 		errors = true;
 	}
-
+	
 	if (jQuery.trim(serverName.val()).length == 0) {
 		serverName.parent().addClass("error");
 		errors = true;
@@ -97,7 +80,24 @@ function saveConnection() {
 		return;
 	}
 
-//	$.post('Home/Add', {
+	$('#add-dialog').modal('hide');
+
+	saveConnections({
+		connectionName: connName.val(),
+		server: server.val(),
+		databaseName: database.val(),
+		userId: userId.val(),
+		password: password.val()
+	});
+
+	$("#connection_name, #server_name, #database_name, #user_id, #password").val("");
+	
+	displayConnections();
+}
+
+function saveConnections(connInfo) {
+
+	//	$.post('Home/Add', {
 //		connName: connName.val(),
 //		connString: connString.val()
 //	}, 
@@ -112,20 +112,51 @@ function saveConnection() {
 //		$('#add-dialog').modal('hide');
 	//	});
 
+	$("#list").append("<tr><td>" + connInfo.connectionName + "</td><td>" + connInfo.server + "</td><td>" + connInfo.database + "</td><td>" + connInfo.userId + "</td><td>" + connInfo.password + "</td></tr>");
+
 	var connections = JSON.parse(localStorage.getItem("connections"));
 
-	connections.push({ connectionName: connName.val(), serverName: serverName.val(), databaseName: databaseName.val(), userId: userId.val(), password: password.val() });
+	connections.push({ connectionName: connInfo.connName, server: connInfo.server, database: connInfo.database, userId: connInfo.userId, password: connInfo.password });
 
 	localStorage.setItem("connections", JSON.stringify(connections));
 
-	$("#connection_name").val("");
-	$("#connection_string").val("");
-	$('#add-dialog').modal('hide');
-
-	displayConnections();
 }
 
-
 function deleteConnection() {
+
+	var connections = [];
+	var row = $("#list tr.select");
+
+	if (row.length > 0) {
+		if (!confirm("Are you sure?"))
+			return;
+		$(row).remove();
+		$("#list tr").each(function () {
+			connections.push({ connectionName: $(":nth-child(1)", this).text(), server: $(":nth-child(2)", this).text(), database: $(":nth-child(3)", this).text(), userId: $(":nth-child(4)", this).text(), password: $(":nth-child(5)", this).text() });
+		});
+		localStorage.setItem("connections", JSON.stringify(connections));
+	}
+}
+
+function setActiveConnection() {
 	
+	var row = $("#list tr.select");
+
+	if (row.length == 0)
+		return;
+
+	$.post('Home/SetConnection', {
+			connectionName: $(":nth-child(1)", row).val(),
+			server: $(":nth-child(2)", row).val(),
+			database: $(":nth-child(3)", row).val(),
+			userId: $(":nth-child(4)", row).val(),
+			password: $(":nth-child(5)", row).val()
+		},
+		function(data) {
+			if (data.status == "error") {
+				alert(data.message);
+				return;
+			}
+			$(row).css("background-color","pink");
+		});
 }
