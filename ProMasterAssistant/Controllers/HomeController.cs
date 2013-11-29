@@ -17,9 +17,10 @@ namespace ProMasterAssistant.Controllers
 
         public ActionResult Index()
         {
-			List<UserConnectionString> connStrings = db.UserConnectionStrings.Where(x => x.UserName == User.Identity.Name).ToList();
+			//List<UserConnectionString> connStrings = db.UserConnectionStrings.Where(x => x.UserName == User.Identity.Name).ToList();
 
-			return View(connStrings);
+			//return View(connStrings);
+            return View();
         }
 
 		[HttpPost]

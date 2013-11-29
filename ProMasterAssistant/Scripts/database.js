@@ -18,17 +18,17 @@ $(function () {
 
 function displayConnections() {
 
-	var connections = localStorage.getItem("connections");
+	var connections = localStorage.getItem("connections") || [];
 
 	if (connections === undefined)
 		return;
 
 	var conns = JSON.parse(connections);
 
-	if (conns.length) {
+	if (conns && conns.length) {
 		$("#list").empty();
 		for (var i = 0; i < conns.length; i++) {
-			$("#list").append("<tr><td>" + conns[i].connectionName + "</td><td>" + conns[i].serverName + "</td><td>" + conns[i].databaseName + "</td><td>" + conns[i].userId + "</td><td>" + conns[i].password + "</td></tr>");
+			$("#list").append("<tr><td>" + conns[i].connid + "</td><td>" + conns[i].server + "</td><td>" + conns[i].database + "</td><td>" + conns[i].userid + "</td><td>" + conns[i].password + "</td></tr>");
 		}
 	}
 }
@@ -83,10 +83,10 @@ function validateConnection() {
 	$('#add-dialog').modal('hide');
 
 	saveConnections({
-		connectionName: connName.val(),
-		server: server.val(),
-		databaseName: database.val(),
-		userId: userId.val(),
+		connid: connName.val(),
+		server: serverName.val(),
+		database: databaseName.val(),
+		userid: userId.val(),
 		password: password.val()
 	});
 
@@ -112,11 +112,11 @@ function saveConnections(connInfo) {
 //		$('#add-dialog').modal('hide');
 	//	});
 
-	$("#list").append("<tr><td>" + connInfo.connectionName + "</td><td>" + connInfo.server + "</td><td>" + connInfo.database + "</td><td>" + connInfo.userId + "</td><td>" + connInfo.password + "</td></tr>");
+    $("#list").append("<tr><td>" + connInfo.connid + "</td><td>" + connInfo.server + "</td><td>" + connInfo.database + "</td><td>" + connInfo.userid + "</td><td>" + connInfo.password + "</td></tr>");
 
-	var connections = JSON.parse(localStorage.getItem("connections"));
+	var connections = JSON.parse(localStorage.getItem("connections")) || [];
 
-	connections.push({ connectionName: connInfo.connName, server: connInfo.server, database: connInfo.database, userId: connInfo.userId, password: connInfo.password });
+	connections.push({ connid: connInfo.connid, server: connInfo.server, database: connInfo.database, userid: connInfo.userid, password: connInfo.password });
 
 	localStorage.setItem("connections", JSON.stringify(connections));
 
@@ -132,7 +132,7 @@ function deleteConnection() {
 			return;
 		$(row).remove();
 		$("#list tr").each(function () {
-			connections.push({ connectionName: $(":nth-child(1)", this).text(), server: $(":nth-child(2)", this).text(), database: $(":nth-child(3)", this).text(), userId: $(":nth-child(4)", this).text(), password: $(":nth-child(5)", this).text() });
+		    connections.push({ connid: $(":nth-child(1)", this).text(), server: $(":nth-child(2)", this).text(), database: $(":nth-child(3)", this).text(), userid: $(":nth-child(4)", this).text(), password: $(":nth-child(5)", this).text() });
 		});
 		localStorage.setItem("connections", JSON.stringify(connections));
 	}
@@ -146,10 +146,10 @@ function setActiveConnection() {
 		return;
 
 	$.post('Home/SetConnection', {
-			connectionName: $(":nth-child(1)", row).val(),
+			connid: $(":nth-child(1)", row).val(),
 			server: $(":nth-child(2)", row).val(),
 			database: $(":nth-child(3)", row).val(),
-			userId: $(":nth-child(4)", row).val(),
+			userid: $(":nth-child(4)", row).val(),
 			password: $(":nth-child(5)", row).val()
 		},
 		function(data) {
