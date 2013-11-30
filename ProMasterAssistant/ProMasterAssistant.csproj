@@ -16,6 +16,10 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,9 +69,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -131,17 +132,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="MainMenuAttribute.cs" />
-    <Compile Include="Models\ConnectionSettingsModel.cs" />
-    <Compile Include="Models\ConnectionsModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectionsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ConnectionsModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectionsModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\GLController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -149,11 +139,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProMaster.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProMaster.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\ConnectionSettingsModel.cs" />
     <Compile Include="ProMasterModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,7 +148,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Connections.sdf" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -171,14 +156,6 @@
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\Reset.css" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\ConnectionsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ConnectionsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Models\ConnectionsModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ConnectionsModel.cs</LastGenOutput>
-    </None>
     <None Include="Content\Site.less" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -221,12 +198,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProMasterModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <EntityDeploy Include="Models\ProMaster.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ProMaster.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
