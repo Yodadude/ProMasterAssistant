@@ -146,17 +146,17 @@ function setActiveConnection() {
 		return;
 
 	$.post('Home/SetConnection', {
-			connid: $(":nth-child(1)", row).val(),
-			server: $(":nth-child(2)", row).val(),
-			database: $(":nth-child(3)", row).val(),
-			userid: $(":nth-child(4)", row).val(),
-			password: $(":nth-child(5)", row).val()
+	    //connid: $(":nth-child(1)", row).text(),
+	    Server: $(":nth-child(2)", row).text(),
+	    Database: $(":nth-child(3)", row).text(),
+	    UserId: $(":nth-child(4)", row).text(),
+	    Password: $(":nth-child(5)", row).text()
 		},
 		function(data) {
 			if (data.status == "error") {
 				alert(data.message);
 				return;
 			}
-			$(row).css("background-color","pink");
+			$(row).css("background-color","lightgreen");
 		});
 }

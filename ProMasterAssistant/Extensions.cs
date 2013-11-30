@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System;
+using System.Text;
+using System.Web;
 using System.Web.Mvc;
 
 namespace ProMasterAssistant
@@ -18,5 +20,15 @@ namespace ProMasterAssistant
 
 			return MvcHtmlString.Create(result);
 		}
+
+        public static String ToBase64(this String str)
+        {
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(str));
+        }
+
+        public static String FromBase64(this String str)
+        {
+            return Encoding.UTF8.GetString(Convert.FromBase64String(str));
+        }
 	}
 }
