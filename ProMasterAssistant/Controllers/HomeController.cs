@@ -15,9 +15,6 @@ namespace ProMasterAssistant.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-			//List<UserConnectionString> connStrings = db.UserConnectionStrings.Where(x => x.UserName == User.Identity.Name).ToList();
-
-			//return View(connStrings);
             return View();
         }
 
