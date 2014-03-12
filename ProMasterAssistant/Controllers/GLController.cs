@@ -6,10 +6,10 @@ namespace ProMasterAssistant.Controllers
     public class GLController : Controller
     {
 
-
         public ActionResult Index()
         {
         	ViewData["menu"] = "index";
+           // ViewBag.ConnectionString = HttpContext.Request.Cookies.Get("ConnectionString").Value.FromBase64();
             return View();
         }
 
