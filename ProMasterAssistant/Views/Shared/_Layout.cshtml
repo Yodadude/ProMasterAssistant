@@ -17,16 +17,16 @@
 			</div>
 			<div class="span7">
 				<ul class="navbar">
-					<li @Html.ActiveMenu("Database")>
+					<li @Html.GetActiveMainMenu("Database")>
 						<a href="@Url.Action("Index","Home")">Database Connection</a>
 					</li>
-					<li @Html.ActiveMenu("Activity")>
+					<li @Html.GetActiveMainMenu("Activity")>
 						<a href="@Url.Action("Index","Activity")">Activity Manager</a>
 					</li>
-					<li @Html.ActiveMenu("Workflow")>
+					<li @Html.GetActiveMainMenu("Workflow")>
 						<a href="@Url.Action("Index","Workflow")">Workflow Configuration</a>
 					</li>
-					<li @Html.ActiveMenu("GL")>
+					<li @Html.GetActiveMainMenu("GL")>
 						<a href="@Url.Action("Index","GL")">GL Configuration</a>
 					</li>
 				</ul>

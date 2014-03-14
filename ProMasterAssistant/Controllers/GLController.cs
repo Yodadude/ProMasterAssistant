@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using NPoco;
+using ProMasterAssistant.Models;
 
 namespace ProMasterAssistant.Controllers
 {
@@ -9,8 +11,21 @@ namespace ProMasterAssistant.Controllers
         public ActionResult Index()
         {
         	ViewData["menu"] = "index";
-           // ViewBag.ConnectionString = HttpContext.Request.Cookies.Get("ConnectionString").Value.FromBase64();
-            return View();
+
+            var connectionString = HttpContext.Request.Cookies.Get("ConnectionString").Value.FromBase64();
+
+            var db = new Database(connectionString, DatabaseType.SqlServer2008);
+
+            var sql = @"select * from gl_type";
+
+            var rows = db.Fetch<Domain.GlType>(sql);
+
+            var model = new GlTypesListViewModel
+            {
+                GlTypes = rows
+            };
+
+            return View(model);
         }
 
 		public ActionResult Rules()

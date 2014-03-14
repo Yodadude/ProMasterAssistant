@@ -133,6 +133,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Domain\GlType.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="MainMenuAttribute.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
@@ -143,6 +145,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ConnectionSettingsModel.cs" />
+    <Compile Include="Models\GlTypesListViewModel.cs" />
     <Compile Include="ProMasterModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -204,7 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Domain\" />
+    <Folder Include="Infrastructure\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>

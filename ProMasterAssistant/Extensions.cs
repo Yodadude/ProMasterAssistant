@@ -7,7 +7,7 @@ namespace ProMasterAssistant
 {
 	public static class Extensions
 	{
-		public static MvcHtmlString ActiveMenu(this HtmlHelper helper, string menuName)
+		public static MvcHtmlString GetActiveMainMenu(this HtmlHelper helper, string menuName)
 		{
 			string result = "";
 			string currentMenuName = helper.ViewData["MainMenuActive"] as string;

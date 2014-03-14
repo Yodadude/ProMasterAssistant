@@ -1,7 +1,23 @@
-﻿
-<div class="main-container">
-	@Html.Partial("_Menu")
-    
-    @ViewBag.ConnectionString
+﻿@model ProMasterAssistant.Models.GlTypesListViewModel
 
+<div class="main-container">
+    @Html.Partial("_Menu")
+
+    <table class="connections">
+        <thead>
+			<tr><th>Name</th><th>Description</th><th>Delimiter</th><th>Status</th><th>Tabs</th><th>Validation Type</th></tr>
+		</thead>
+
+        @foreach (var item in Model.GlTypes)
+        {
+            <tr>
+                <td>@item.Type</td>
+                <td>@item.Description</td>
+                <td>@item.Delimiter</td>
+                <td>@item.Status</td>
+                <td>@item.TabNo</td>
+                <td>@item.ValidationType</td>
+            </tr>
+        }
+    </table>
 </div>
