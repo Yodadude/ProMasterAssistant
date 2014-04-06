@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using NPoco;
 using ProMasterAssistant.Models;
+using System.Collections.Generic;
+using ProMasterAssistant.Infrastructure;
 
 namespace ProMasterAssistant.Controllers
 {
@@ -10,7 +12,6 @@ namespace ProMasterAssistant.Controllers
 
         public ActionResult Index()
         {
-        	ViewData["menu"] = "index";
 
             var connectionString = HttpContext.Request.Cookies.Get("ConnectionString").Value.FromBase64();
 
@@ -30,19 +31,16 @@ namespace ProMasterAssistant.Controllers
 
 		public ActionResult Rules()
 		{
-			ViewData["menu"] = "rules";
 			return View();
 		}
 
 		public ActionResult Segments()
 		{
-			ViewData["menu"] = "segments";
 			return View();
 		}
 
 		public ActionResult Test()
 		{
-			ViewData["menu"] = "test";
 			return View();
 		}
 
@@ -51,5 +49,23 @@ namespace ProMasterAssistant.Controllers
 			return PartialView();
 		}
 
+        [ChildActionOnly]
+        public ActionResult Menu()
+        {
+            var items = new List<MenuItem>
+            {
+                new MenuItem{ Text = "Types", Action = "Index", Controller = "GL", Selected=false },
+                new MenuItem{ Text = "Segments", Action = "Segments", Controller = "GL", Selected = false},
+                new MenuItem{ Text = "Rules", Action = "Rules", Controller = "GL", Selected = false },
+                new MenuItem{ Text = "Test", Action = "Test", Controller = "GL", Selected = false }
+            };
+
+            MenuHelper.SetActive(ControllerContext, items);
+
+            return PartialView("_Menu", items);
+        }
+
     }
+
+
 }

@@ -1,0 +1,11 @@
+﻿@using ProMasterAssistant.Infrastructure
+@model List<MenuItem>
+
+<ul class="nav nav-tabs" id="tabs">
+@foreach (var item in Model)
+{
+    <li @(item.Selected ? "class=active" : "")>
+        <a href="@Url.Action(item.Action, item.Controller)">@item.Text</a>
+    </li>
+}
+</ul>

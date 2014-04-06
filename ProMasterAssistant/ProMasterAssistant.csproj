@@ -136,6 +136,8 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Domain\GlType.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Infrastructure\MenuHelper.cs" />
+    <Compile Include="Infrastructure\MenuItem.cs" />
     <Compile Include="MainMenuAttribute.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\GLController.cs" />
@@ -199,15 +201,22 @@
     <Content Include="Views\GL\Rules.cshtml" />
     <Content Include="Views\GL\Segments.cshtml" />
     <Content Include="Views\GL\Test.cshtml" />
-    <Content Include="Views\GL\_Menu.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
     <EntityDeploy Include="ProMasterModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProMasterModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Views\Workflow\CallDefinitions.cshtml" />
+    <Content Include="Views\Workflow\EntryDefinitions.cshtml" />
+    <Content Include="Views\Workflow\Map.cshtml" />
+    <Content Include="Views\Workflow\ActivityTypes.cshtml" />
+    <Content Include="Views\Workflow\Messages.cshtml" />
+    <Content Include="Views\Activity\MapperSource.cshtml" />
+    <Content Include="Views\Activity\XslSource.cshtml" />
+    <Content Include="Views\Activity\SqlActions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Infrastructure\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>

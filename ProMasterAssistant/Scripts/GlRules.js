@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿
+$(function () {
 	$("#ref-container").load("Reference", setup);
 });
 
