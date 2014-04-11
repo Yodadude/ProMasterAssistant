@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using ProMasterAssistant.Models;
 using NPoco;
 using System.Text;
+using System.Configuration;
 
 namespace ProMasterAssistant.Controllers
 {
@@ -17,22 +18,33 @@ namespace ProMasterAssistant.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            return View();
+            var list = new List<ConnectionStringsModel>();
+            ViewBag.CurrentConnectionStringName = HttpContext.Request.Cookies["ConnectionStringName"] != null ? HttpContext.Request.Cookies["ConnectionStringName"].Value : "";
+
+            for (int i = 0; i < ConfigurationManager.ConnectionStrings.Count; i++)
+			{
+                list.Add(new ConnectionStringsModel
+                {
+                    Name = ConfigurationManager.ConnectionStrings[i].Name,
+                    ConnectionString = ConfigurationManager.ConnectionStrings[i].ConnectionString
+                });
+			}
+
+            return View(list);
         }
 
         [HttpPost]
         public JsonResult SetConnection(ConnectionSettingsModel model)
         {
 
-            HttpContext.Response.Cookies.Remove("ConnectionString");
+            HttpContext.Response.Cookies.Remove("ConnectionStringName");
 
             try
             {
-                string connectionString = String.Format("Server={0};Database={1};User Id={2};Password={3};", model.Server, model.Database, model.UserId, model.Password);
 
-                var db = new Database(connectionString, DatabaseType.SqlServer2008);
+                var db = new Database(model.ConnectionStringName, DatabaseType.SqlServer2008);
 
-                this.HttpContext.Response.Cookies.Add(new HttpCookie("ConnectionString", connectionString.ToBase64()));
+                this.HttpContext.Response.Cookies.Add(new HttpCookie("ConnectionStringName", model.ConnectionStringName));
 
                 return Json(new { status = "ok", message = "" });
 

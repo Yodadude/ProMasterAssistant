@@ -149,6 +149,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ConnectionSettingsModel.cs" />
+    <Compile Include="Models\ConnectionStringsModel.cs" />
     <Compile Include="Models\GlTypesListViewModel.cs" />
     <Compile Include="ProMasterModel.Designer.cs">
       <AutoGen>True</AutoGen>

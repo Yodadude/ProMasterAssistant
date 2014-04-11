@@ -5,8 +5,9 @@ using System.Web;
 
 namespace ProMasterAssistant.Models
 {
-    public class ConnectionSettingsModel
+    public class ConnectionStringsModel
     {
-        public string ConnectionStringName { get; set; }
+        public string Name { get; set; }
+        public string ConnectionString { get; set; }
     }
 }

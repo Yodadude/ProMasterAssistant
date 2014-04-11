@@ -7,19 +7,19 @@ using ProMasterAssistant.Infrastructure;
 namespace ProMasterAssistant.Controllers
 {
 	[MainMenu]
-    public class GLController : Controller
+    public class GLController : BaseController
     {
 
         public ActionResult Index()
         {
 
-            var connectionString = HttpContext.Request.Cookies.Get("ConnectionString").Value.FromBase64();
+            //var connectionString = HttpContext.Request.Cookies.Get("ConnectionString").Value.FromBase64();
 
-            var db = new Database(connectionString, DatabaseType.SqlServer2008);
+            //var db = new Database(connectionString, DatabaseType.SqlServer2008);
 
             var sql = @"select * from gl_type";
 
-            var rows = db.Fetch<Domain.GlType>(sql);
+            var rows = DataContext.Fetch<Domain.GlType>(sql);
 
             var model = new GlTypesListViewModel
             {

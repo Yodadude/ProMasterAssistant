@@ -1,8 +1,8 @@
 ﻿
 $(function () {
 	$("#list tr").live("click", handleSelect);
-	$("#savebtn").click(validateConnection);
-	$("#delbtn").click(deleteConnection);
+	//$("#savebtn").click(validateConnection);
+	//$("#delbtn").click(deleteConnection);
 	$("#setbtn").click(setActiveConnection);
 	$("#list tr").hover(
 		function () {
@@ -12,7 +12,7 @@ $(function () {
 			$(this).removeClass("highlight");
 		}
 	);
-	displayConnections();	
+	//displayConnections();	
 });
 
 
@@ -143,20 +143,17 @@ function setActiveConnection() {
 	var row = $("#list tr.select");
 
 	if (row.length == 0)
-		return;
+	    return;
 
-	$.post('Home/SetConnection', {
-	    //connid: $(":nth-child(1)", row).text(),
-	    Server: $(":nth-child(2)", row).text(),
-	    Database: $(":nth-child(3)", row).text(),
-	    UserId: $(":nth-child(4)", row).text(),
-	    Password: $(":nth-child(5)", row).text()
-		},
+	var connectionName = $(":nth-child(1)", row).text();
+
+	$.post('Home/SetConnection', { ConnectionStringName: connectionName	},
 		function(data) {
 			if (data.status == "error") {
 				alert(data.message);
 				return;
 			}
-			$(row).css("background-color","lightgreen");
+			$(row).addClass("current");
+			$("#current-connection").text(connectionName);
 		});
 }

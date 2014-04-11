@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string connectionStringName = HttpContext.Current.Request.Cookies["ConnectionStringName"] != null ? HttpContext.Current.Request.Cookies["ConnectionStringName"].Value : "";
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -13,7 +16,7 @@
 			<div class="span5">
 				<span class="appname">ProMaster Assistant</span>
 				<br/>
-				<span class="username">@User.Identity.Name</span>
+				<span id="current-connection" class="connection-name">@connectionStringName</span>
 			</div>
 			<div class="span7">
 				<ul class="navbar">
