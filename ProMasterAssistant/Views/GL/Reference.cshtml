@@ -10,7 +10,8 @@
 	<li><a href="#inv" data-toggle="tab">INV</a></li>
 	<li><a href="#fillahd" data-toggle="tab">FILLAHD</a></li>
 	<li><a href="#fillahddefault" data-toggle="tab">FILLAHDDEFAULT</a></li>
-	<li><a href="#overlay" data-toggle="tab">OVERLAY</a></li>
+    <li><a href="#overlay" data-toggle="tab">OVERLAY</a></li>
+    <li><a href="#overlaydep" data-toggle="tab">OVERLAYDEP</a></li>
 	<li><a href="#setuppercase" data-toggle="tab">SETUPPERCASE</a></li>
 	<li><a href="#setlowercase" data-toggle="tab">SETLOWERCASE</a></li>
 	<li><a href="#multiview" data-toggle="tab">MULTIVIEW</a></li>
@@ -87,12 +88,19 @@
 		<p>Example: 4:5=3</p>
 		<p>For example, if the user selected a value into segment 4 then FILLAHDDEFAULT will then try to auto-populate segment 5 with attribute 3 from segment 4.</p>
 	</div>
-	<div class="tab-pane" id="overlay">
-		<p>This allows the creation default GL code(s) by merging a number previously defined codes throughout the application, from account profile, expense type etc, when creating a commitment.</p>
-		<p>Format: {gl_view}&&[dep|nodep];</p>
-		<p>Example: account_gl&&dep;expense_gl&&dep;transaction_gl&&dep</p>
-		<p>The above example will perform the OVERLAY using GL codes from the ACCOUNT_GL, EXPENSE_GL and TRANSACTION_GL sources, and will apply any DEP rules. Specify 'nodep' to not process any DEP rules.</p>
-		<p>Valid GL sources: account_gl, expense_gl, transaction_gl, catitem_gl</p>
+    <div class="tab-pane" id="overlay">
+        <p>This allows the creation default GL code(s) by merging a number previously defined codes throughout the application, from account profile, expense type etc, when creating a commitment.</p>
+        <p>Format: {gl_view}&&[dep|nodep];</p>
+        <p>Example: account_gl&&dep;expense_gl&&dep;transaction_gl&&dep</p>
+        <p>The above example will perform the OVERLAY using GL codes from the ACCOUNT_GL, EXPENSE_GL and TRANSACTION_GL sources, and will apply any DEP rules. Specify 'nodep' to not process any DEP rules.</p>
+        <p>Valid GL sources: account_gl, expense_gl, transaction_gl, catitem_gl</p>
+    </div>
+    <div class="tab-pane" id="overlaydep">
+		<p>This allows the ability to clear nominated segments based on a defined value for a nominated segment, and will occur at the end of the OVERLAY process.</p>
+		<p>Format: {segid}={'value'}?{segid};{segid};{segid}:{segid}={'value'}?{segid};{segid};{segid}</p>
+		<p>Example: 1=SUN?8;9;10;11;12;13;14:1=CINA?2;3;4;5;6;7:1=ELLI?2;3;4;5;6;7:1=BPCS?2;3;4;5;6;7:-</p>
+		<p>The above example will clear segments 8-13 when segment 1 equals SUN, segments 2-7 when segment 1 equals ELLI or BPCS.</p>
+		<p>Valid GL views: commit_gl, fbt_gl, allowDAYusr_gl, allowCARusr_gl</p>
 	</div>
 	<div class="tab-pane" id="setuppercase">
 		<p>This rule forces the text entry into a segment to be uppercase.</p>
