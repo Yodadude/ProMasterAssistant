@@ -20,9 +20,10 @@ namespace ProMasterAssistant.Controllers
         {
             var list = new List<ConnectionStringsModel>();
             ViewBag.CurrentConnectionStringName = HttpContext.Request.Cookies["ConnectionStringName"] != null ? HttpContext.Request.Cookies["ConnectionStringName"].Value : "";
+            //ViewBag.CurrentConnectionStringName = HttpContext.Request.Cookies["ConnectionStringName"].Value ?? "";
 
             for (int i = 0; i < ConfigurationManager.ConnectionStrings.Count; i++)
-			{
+		    {
                 list.Add(new ConnectionStringsModel
                 {
                     Name = ConfigurationManager.ConnectionStrings[i].Name,

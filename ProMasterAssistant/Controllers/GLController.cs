@@ -13,10 +13,6 @@ namespace ProMasterAssistant.Controllers
         public ActionResult Index()
         {
 
-            //var connectionString = HttpContext.Request.Cookies.Get("ConnectionString").Value.FromBase64();
-
-            //var db = new Database(connectionString, DatabaseType.SqlServer2008);
-
             var sql = @"select * from gl_type";
 
             var rows = DataContext.Fetch<Domain.GlType>(sql);
