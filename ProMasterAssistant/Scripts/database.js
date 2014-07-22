@@ -147,13 +147,21 @@ function setActiveConnection() {
 
 	var connectionName = $(":nth-child(1)", row).text();
 
-	$.post('Home/SetConnection', { ConnectionStringName: connectionName	},
-		function(data) {
-			if (data.status == "error") {
-				alert(data.message);
-				return;
-			}
-			$(row).addClass("current");
-			$("#current-connection").text(connectionName);
-		});
+	$("#connectionStringName").val(connectionName);
+	$("#form1")[0].submit();
+
+    //window.open("/Home/SetConnection?ConnectionStringName=" + encodeURIComponent(connectionName));
+
+
+
+	//$.post('Home/SetConnection', { ConnectionStringName: connectionName	},
+	//	function(data) {
+	//		if (data.status == "error") {
+	//			alert(data.message);
+	//			return;
+	//		}
+	//		$("#list tr.current").removeClass("current");
+	//		$(row).addClass("current");
+	//		$("#current-connection").text(connectionName);
+	//	});
 }

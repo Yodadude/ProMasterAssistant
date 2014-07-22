@@ -6,20 +6,29 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using ProMasterAssistant.Infrastructure;
+using StructureMap;
 
 namespace ProMasterAssistant.Controllers
 {
     public class BaseController : Controller
     {
-        public Database DataContext { get; private set; }
+        public IDatabase DataContext { get; set; }
+        public ICommandInvoker Command { get; set; }
+
+        public BaseController() : this(ObjectFactory.GetInstance<IDatabase>(), ObjectFactory.GetInstance<ICommandInvoker>())
+        {
+        }
+
+        public BaseController(IDatabase database, ICommandInvoker invoker)
+        {
+            DataContext = database;
+            Command = invoker;
+        }
 
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
-
-            var connectionStringName = requestContext.HttpContext.Request.Cookies["ConnectionStringName"].Value;
-
-            DataContext = new Database(connectionStringName);
         }
     }
 }

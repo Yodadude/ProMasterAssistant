@@ -11,6 +11,7 @@ namespace ProMasterAssistant
 		{
 			string result = "";
 			string currentMenuName = helper.ViewData["MainMenuActive"] as string;
+            bool IsConnectionStringDefined = HttpContext.Current.Request.Cookies["ConnectionStringName"].Value != null;
 
 			if ((menuName == "Database" && currentMenuName == "Home") ||
 				(menuName == "Activity" && currentMenuName == "Activity") ||

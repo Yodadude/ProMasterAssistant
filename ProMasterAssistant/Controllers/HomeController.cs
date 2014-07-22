@@ -23,19 +23,19 @@ namespace ProMasterAssistant.Controllers
             //ViewBag.CurrentConnectionStringName = HttpContext.Request.Cookies["ConnectionStringName"].Value ?? "";
 
             for (int i = 0; i < ConfigurationManager.ConnectionStrings.Count; i++)
-		    {
+            {
                 list.Add(new ConnectionStringsModel
                 {
                     Name = ConfigurationManager.ConnectionStrings[i].Name,
                     ConnectionString = ConfigurationManager.ConnectionStrings[i].ConnectionString
                 });
-			}
+            }
 
             return View(list);
         }
 
         [HttpPost]
-        public JsonResult SetConnection(ConnectionSettingsModel model)
+        public ActionResult SetConnection(ConnectionSettingsModel model)
         {
 
             HttpContext.Response.Cookies.Remove("ConnectionStringName");
@@ -47,12 +47,15 @@ namespace ProMasterAssistant.Controllers
 
                 this.HttpContext.Response.Cookies.Add(new HttpCookie("ConnectionStringName", model.ConnectionStringName));
 
-                return Json(new { status = "ok", message = "" });
+                return RedirectToAction("Index");
+
+                //return Json(new { status = "ok", message = "" });
 
             }
             catch (Exception e)
             {
-                return Json(new { status = "error", message = e.Message });
+                return View("Error");
+                //return Json(new { status = "error", message = e.Message });
             }
         }
     }

@@ -19,20 +19,7 @@
 				<span id="current-connection" class="connection-name">@connectionStringName</span>
 			</div>
 			<div class="span7">
-				<ul class="navbar">
-					<li @Html.GetActiveMainMenu("Database")>
-						<a href="@Url.Action("Index","Home")">Database Connection</a>
-					</li>
-					<li @Html.GetActiveMainMenu("Activity")>
-						<a href="@Url.Action("Index","Activity")">Activity Manager</a>
-					</li>
-					<li @Html.GetActiveMainMenu("Workflow")>
-						<a href="@Url.Action("Index","Workflow")">Workflow Configuration</a>
-					</li>
-					<li @Html.GetActiveMainMenu("GL")>
-						<a href="@Url.Action("Index","GL")">GL Configuration</a>
-					</li>
-				</ul>
+                @Html.Action("MainMenu", "Shared")
 			</div>
 		</div>
 		@RenderBody()
