@@ -1,10 +1,10 @@
 ﻿@using ProMasterAssistant.Infrastructure
 @model List<MenuItem>
 
-<ul class="navbar" style="background-color:pink;">
+<ul class="navbar">
 @foreach (var item in Model)
 {
-    <li @(item.Selected ? "class=active" : "") style="width:300px;">
+    <li @(item.Selected ? "class=active" : "")>
         <a href="@Url.Action(item.Action, item.Controller)">@item.Text</a>
     </li>
 }
