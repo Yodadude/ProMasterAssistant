@@ -14,7 +14,8 @@
     <li><a href="#overlaydep" data-toggle="tab">OVERLAYDEP</a></li>
 	<li><a href="#setuppercase" data-toggle="tab">SETUPPERCASE</a></li>
 	<li><a href="#setlowercase" data-toggle="tab">SETLOWERCASE</a></li>
-	<li><a href="#multiview" data-toggle="tab">MULTIVIEW</a></li>
+    <li><a href="#multiview" data-toggle="tab">MULTIVIEW</a></li>
+    <li><a href="#autosearch" data-toggle="tab">AUTO_SEARCH</a></li>
 </ul>
 
 <div class="tab-content">
@@ -114,10 +115,16 @@
 		<p>Example: 2;3</p>
 		<p>The above example will update any codes in the nominated segments to be lowercase when submitted.</p>
 	</div>
-	<div class="tab-pane" id="multiview">
-		<p>This rule will dynamically hide/show segments based on the value of a nominated segment.</p>
-		<p>Format: {segid}={'value'};{dep-segid,dep-segid}</p>
-		<p>Example: 1=SAP;2,3</p>
-		<p>The above example will show segments 2 and 3 and hide any other segments when segment 1 has a value of SAP.</p>
+    <div class="tab-pane" id="multiview">
+        <p>This rule will dynamically hide/show segments based on the value of a nominated segment.</p>
+        <p>Format: {segid}={'value'};{dep-segid,dep-segid}</p>
+        <p>Example: 1=SAP;2,3</p>
+        <p>The above example will show segments 2 and 3 and hide any other segments when segment 1 has a value of SAP.</p>
+    </div>
+    <div class="tab-pane" id="autosearch">
+		<p>This rule will cause the GL Search page to retrieve the GL codes on initial display, rather than forcing the user to click the Search button.</p>
+		<p>Format: {segid};{segid}</p>
+		<p>Example: 1;2,3</p>
+		<p>The above example will cause the GL Search page to display codes but only for segments 1, 2 and 3.</p>
 	</div>
 </div>
