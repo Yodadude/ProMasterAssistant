@@ -31,7 +31,7 @@ namespace ProMasterAssistant.Controllers
 
             if (!IsConnectionStringDefined)
             {
-                items = items.Where(x => x.Text.Equals("Database")).ToList();
+                items.Clear();
             }
 
             return PartialView(items);

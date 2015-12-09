@@ -54,7 +54,7 @@ namespace ProMasterAssistant.Controllers
             }
             catch (Exception e)
             {
-                return View("Error");
+                return View(e.Message);
                 //return Json(new { status = "error", message = e.Message });
             }
         }

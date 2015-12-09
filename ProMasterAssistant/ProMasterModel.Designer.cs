@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -392,6 +393,7 @@ namespace ProMasterAssistant
         private ObjectSet<ActivitySqlActions> _ActivitySqlActions;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -555,11 +557,11 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -590,6 +592,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -740,6 +743,7 @@ namespace ProMasterAssistant
         partial void OnbitmapChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -766,6 +770,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -792,6 +797,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -873,6 +879,7 @@ namespace ProMasterAssistant
         partial void Onemail_optionChanged();
 
         #endregion
+
     
     }
     
@@ -904,6 +911,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1030,6 +1038,7 @@ namespace ProMasterAssistant
         partial void OndescriptionChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1056,6 +1065,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1082,6 +1092,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1187,6 +1198,7 @@ namespace ProMasterAssistant
         partial void Oncreate_dateChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1229,6 +1241,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1259,6 +1272,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1481,6 +1495,7 @@ namespace ProMasterAssistant
         partial void Onrenamed_file_nameChanged();
 
         #endregion
+
     
     }
     
@@ -1510,6 +1525,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1618,6 +1634,7 @@ namespace ProMasterAssistant
         partial void OncontentsChanged();
 
         #endregion
+
     
     }
     
@@ -1643,6 +1660,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1841,6 +1859,7 @@ namespace ProMasterAssistant
         partial void Onval_bill_debit_txnsChanged();
 
         #endregion
+
     
     }
     
@@ -1870,6 +1889,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2023,6 +2043,7 @@ namespace ProMasterAssistant
         partial void Onvalue_datetimeChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2065,6 +2086,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2097,6 +2119,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2523,6 +2546,7 @@ namespace ProMasterAssistant
         partial void Ongroup_nameChanged();
 
         #endregion
+
     
     }
     
@@ -2552,6 +2576,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2804,6 +2829,7 @@ namespace ProMasterAssistant
         partial void Onlog_select_resultsChanged();
 
         #endregion
+
     
     }
     
@@ -2839,6 +2865,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3019,6 +3046,7 @@ namespace ProMasterAssistant
         partial void Onmessage2Changed();
 
         #endregion
+
     
     }
     
@@ -3046,6 +3074,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3247,6 +3276,7 @@ namespace ProMasterAssistant
         partial void Onactive_flagChanged();
 
         #endregion
+
     
     }
     
@@ -3274,6 +3304,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3499,6 +3530,7 @@ namespace ProMasterAssistant
         partial void Onexpiry_dateChanged();
 
         #endregion
+
     
     }
     
@@ -3540,6 +3572,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3837,6 +3870,7 @@ namespace ProMasterAssistant
         partial void Onsearch_win_defnChanged();
 
         #endregion
+
     
     }
     
@@ -3868,6 +3902,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4018,6 +4053,7 @@ namespace ProMasterAssistant
         partial void Onvalidation_typeChanged();
 
         #endregion
+
     
     }
     
@@ -4047,6 +4083,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4128,6 +4165,7 @@ namespace ProMasterAssistant
         partial void Onload_orderChanged();
 
         #endregion
+
     
     }
     
@@ -4161,6 +4199,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4365,6 +4404,7 @@ namespace ProMasterAssistant
         partial void Onsearch_win_defnChanged();
 
         #endregion
+
     
     }
     
@@ -4392,6 +4432,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4446,6 +4487,7 @@ namespace ProMasterAssistant
         partial void Ondisplay_nameChanged();
 
         #endregion
+
     
     }
     
@@ -4477,6 +4519,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4849,6 +4892,7 @@ namespace ProMasterAssistant
         partial void Onall_transaction_typeChanged();
 
         #endregion
+
     
     }
     
@@ -4882,6 +4926,7 @@ namespace ProMasterAssistant
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -5017,9 +5062,11 @@ namespace ProMasterAssistant
         partial void Onload_orderChanged();
 
         #endregion
+
     
     }
 
     #endregion
+
     
 }

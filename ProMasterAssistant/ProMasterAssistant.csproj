@@ -22,6 +22,12 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -149,8 +155,12 @@
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\SmDependencyResolver.cs" />
+    <Compile Include="Domain\GlSegmentDefn.cs" />
     <Compile Include="Domain\GlType.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Handlers\GL\GLSegmentQueryHandler.cs" />
+    <Compile Include="Handlers\GL\GLSegmentQueryModel.cs" />
+    <Compile Include="Handlers\GL\GLSegmentViewModel.cs" />
     <Compile Include="Handlers\GL\GLTypeListHandler.cs" />
     <Compile Include="Handlers\GL\GLTypeListViewModel.cs" />
     <Compile Include="Infrastructure\CommandInvoker.cs" />

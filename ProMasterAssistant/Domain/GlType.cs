@@ -3,7 +3,7 @@
 namespace ProMasterAssistant.Domain
 {
     [TableName("gl_type")]
-    [PrimaryKey("gl_type, autoIncrement = false")]
+    [PrimaryKey("gl_type", AutoIncrement = false)]
     public class GlType
     {
         [Column("gl_type")]
